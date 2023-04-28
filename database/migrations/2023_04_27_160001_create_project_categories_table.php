@@ -16,6 +16,8 @@ class CreateProjectCategoriesTable extends Migration
         Schema::create('project_categories', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('name')->nullable(false);
+            $table->unsignedInteger('order')->nullable(false);
         });
     }
 
