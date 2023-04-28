@@ -3,7 +3,7 @@
     <div class="row justify-content-center">
       <div class="col-md-8">
         <div class="card">
-          <div class="card-header">Example Component</div>
+          <div class="card-header">Test change</div>
 
           <div class="card-body">Hi Sugar!</div>
         </div>
