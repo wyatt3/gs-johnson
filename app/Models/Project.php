@@ -16,9 +16,9 @@ class Project extends Model
         'order'
     ];
 
-    public function category()
+    public function projectCategory()
     {
-        return $this->belongsTo(ProjectCategory::class);
+        return $this->belongsTo(ProjectCategory::class, 'category_id');
     }
 
     public function media()

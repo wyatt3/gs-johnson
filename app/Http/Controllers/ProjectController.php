@@ -9,7 +9,25 @@ class ProjectController extends Controller
 {
     public function getProjects()
     {
-        $projects = Project::with('media')->groupBy('category')->orderBy('order')->get();
+        $projects = Project::with(['media'])->orderBy('order')->get()->groupBy('projectCategory.name');
         return response()->json($projects);
+    }
+
+    public function getProject($id)
+    {
+        $project = Project::with(['media'])->find($id);
+        return response()->json($project);
+    }
+
+    public function createProject(Request $request)
+    {
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'category_id' => 'required',
+            'order' => 'required'
+        ]);
+        $project = Project::create($request->all());
+        return response()->json($project);
     }
 }
