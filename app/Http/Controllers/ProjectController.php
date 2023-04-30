@@ -19,7 +19,12 @@ class ProjectController extends Controller
         return response()->json($project);
     }
 
-    public function createProject(Request $request)
+    public function getCreateProject()
+    {
+        return view('admin.projects.create');
+    }
+
+    public function postCreateProject(Request $request)
     {
         $request->validate([
             'title' => 'required',
