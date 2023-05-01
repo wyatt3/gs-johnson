@@ -10,6 +10,14 @@ use Illuminate\Support\Str;
 
 class ProjectMediaService
 {
+    /**
+     * create project media
+     *
+     * @param Project $project
+     * @param UploadedFile $file
+     * @param integer $order
+     * @return ProjectMedia
+     */
     public function createProjectMedia(Project $project, UploadedFile $file, int $order): ProjectMedia
     {
         $media = ProjectMedia::make([
@@ -29,9 +37,15 @@ class ProjectMediaService
         return $media;
     }
 
+    /**
+     * delete project media
+     *
+     * @param ProjectMedia $media
+     * @return boolean
+     */
     public function deleteProjectMedia(ProjectMedia $media): bool
     {
-        Storage::disk('postImages')->delete($media->path);
+        Storage::disk('media')->delete($media->path);
         $media->delete();
         return true;
     }

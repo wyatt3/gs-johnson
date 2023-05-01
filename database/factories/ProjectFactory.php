@@ -2,7 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Project;
 use App\Models\ProjectCategory;
+use App\Models\ProjectMedia;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ProjectFactory extends Factory
@@ -20,5 +22,15 @@ class ProjectFactory extends Factory
             'category_id' => ProjectCategory::factory(),
             'order' => $this->faker->numberBetween(1, 100)
         ];
+    }
+
+    public function withMedia()
+    {
+        return $this->afterCreating(function (Project $project) {
+            $media = ProjectMedia::factory()->count(2)->make();
+            foreach ($media as $photo) {
+                $project->media()->save($photo);
+            }
+        });
     }
 }
