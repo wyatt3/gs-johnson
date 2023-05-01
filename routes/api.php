@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\ProjectCategoryController;
 use App\Http\Controllers\ProjectController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +16,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/projects', [ProjectController::class, 'getProjects']);
+Route::get('/project-categories', [ProjectCategoryController::class, 'getProjectCategories']);
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::prefix('/project-categories')->group(function () {
+        Route::post('/create', [ProjectCategoryController::class, 'postCreateProjectCategory'])->name('admin.project-categories.store');
+        Route::post('/update', [ProjectCategoryController::class, 'postEditProjectCategory'])->name('admin.project-categories.update');
+        Route::post('/delete', [ProjectCategoryController::class, 'postDeleteProjectCategory'])->name('admin.project-categories.delete');
+    });
+});

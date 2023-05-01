@@ -2,10 +2,10 @@
 
 namespace App\Services;
 
-use App\Models\Project;
+use App\Facades\ProjectService;
 use App\Models\ProjectCategory;
 
-class ProjectCatergoryService
+class ProjectCategoryService
 {
     public function createProjectCategory(string $name, int $order): ProjectCategory
     {
@@ -27,8 +27,10 @@ class ProjectCatergoryService
 
     public function deleteProjectCategory(ProjectCategory $category): bool
     {
+        $category->projects()->each(function ($project) {
+            ProjectService::deleteProject($project);
+        });
         $category->delete();
-        $category->projects()->delete();
         return true;
     }
 }

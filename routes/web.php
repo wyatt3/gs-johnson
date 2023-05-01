@@ -23,6 +23,7 @@ Route::get('/', [Controller::class, 'index'])->name('home');
 
 Route::prefix('/admin')->middleware('auth')->group(function () {
     Route::get('/', [Controller::class, 'adminIndex'])->name('admin');
+    Route::get('/project-categories', [ProjectCategoryController::class, 'getProjectCategoriesInterface'])->name('admin.project-categories.index');
 
     Route::prefix('/projects')->group(function () {
         Route::get('/', [ProjectController::class, 'getProjectsInterface'])->name('admin.projects.index');
@@ -32,14 +33,5 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
         Route::post('/update', [ProjectController::class, 'postEditProject'])->name('admin.projects.update');
         Route::post('/delete', [ProjectController::class, 'postDeleteProject'])->name('admin.projects.delete');
         Route::get('/{id}', [ProjectController::class, 'getProject'])->name('admin.project.get');
-    });
-
-    Route::prefix('/project-categories')->group(function () {
-        Route::get('/', [ProjectCategoryController::class, 'getProjectCategoriesInterface'])->name('admin.project-categories.index');
-        Route::get('/create', [ProjectCategoryController::class, 'getCreateProjectCategory'])->name('admin.project-categories.create');
-        Route::post('/create', [ProjectCategoryController::class, 'postCreateProjectCategory'])->name('admin.project-categories.store');
-        Route::get('/edit/{id}', [ProjectCategoryController::class, 'getEditProjectCategory'])->name('admin.project-categories.edit');
-        Route::post('/update', [ProjectCategoryController::class, 'postEditProjectCategory'])->name('admin.project-categories.update');
-        Route::post('/delete', [ProjectCategoryController::class, 'postDeleteProjectCategory'])->name('admin.project-categories.delete');
     });
 });
