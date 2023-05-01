@@ -13,6 +13,11 @@ class ProjectController extends Controller
         return response()->json($projects);
     }
 
+    public function getProjectsInterface()
+    {
+        return view('admin.projects.index');
+    }
+
     public function getProject($id)
     {
         $project = Project::with(['media'])->find($id);
