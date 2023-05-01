@@ -26,6 +26,11 @@ class ProjectMediaServiceTest extends TestCase
         $response = ProjectMediaService::createProjectMedia($project, $file, $order);
 
         $this->assertInstanceOf(ProjectMedia::class, $response);
+        $this->assertDatabaseHas('project_media', [
+            'project_id' => $project->getKey(),
+            'path' => $response->path,
+            'order' => $order
+        ]);
     }
 
     public function testDeleteProjectMedia()

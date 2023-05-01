@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Facades\ProjectMediaService;
 use App\Models\Project;
 use App\Models\ProjectCategory;
 
@@ -58,6 +59,7 @@ class ProjectService
     {
         $project->delete();
         $project->media()->each(function ($media) {
+            ProjectMediaService::deleteProjectMedia($media);
         });
         return true;
     }

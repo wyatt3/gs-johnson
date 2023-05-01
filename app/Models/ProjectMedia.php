@@ -14,9 +14,4 @@ class ProjectMedia extends Model
         'order',
         'path'
     ];
-
-    public function project()
-    {
-        return $this->belongsTo(Project::class);
-    }
 }

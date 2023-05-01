@@ -19,9 +19,12 @@ class ProjectCategoryServiceTest extends TestCase
     {
         $category = ProjectCategory::factory()->make();
 
-        $response = ProjectCategoryService::createProjectCategory($category->name, $category->order);
+        ProjectCategoryService::createProjectCategory($category->name, $category->order);
 
-        $this->assertEquals($category->toArray(), ['name' => $response->name, 'order' => $response->order]);
+        $this->assertDatabaseHas('project_categories', [
+            'name' => $category->name,
+            'order' => $category->order
+        ]);
     }
 
     public function testeditProjectCategory()
