@@ -39,8 +39,6 @@ class ProjectCategoryServiceTest extends TestCase
     {
         $category = ProjectCategory::factory()->create();
 
-        $project = Project::factory()->for($category)->create();
-
         $response = ProjectCategoryService::deleteProjectCategory($category);
 
         $this->assertTrue($response);
