@@ -57,10 +57,10 @@ class ProjectService
      */
     public function deleteProject(Project $project): bool
     {
-        $project->delete();
         $project->media()->each(function ($media) {
             ProjectMediaService::deleteProjectMedia($media);
         });
+        $project->delete();
         return true;
     }
 }
