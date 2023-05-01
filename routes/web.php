@@ -24,7 +24,7 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
     Route::get('/', [Controller::class, 'adminIndex'])->name('admin');
 
     Route::prefix('/projects')->group(function () {
-        Route::get('/', [ProjectController::class, 'getProjects'])->name('admin.projects');
+        Route::get('/', [ProjectController::class, 'getProjects'])->name('admin.projects.index');
         Route::get('/create', [ProjectController::class, 'getCreateProject'])->name('admin.projects.create');
         Route::post('/create', [ProjectController::class, 'postCreateProject'])->name('admin.projects.store');
         Route::get('/edit/{id}', [ProjectController::class, 'getEditProject'])->name('admin.projects.edit');
@@ -34,7 +34,7 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
     });
 
     Route::prefix('/project-categories')->group(function () {
-        Route::get('/', [ProjectController::class, 'getProjectCategories'])->name('admin.project-categories');
+        Route::get('/', [ProjectController::class, 'getProjectCategories'])->name('admin.project-categories.index');
         Route::get('/create', [ProjectController::class, 'getCreateProjectCategory'])->name('admin.project-categories.create');
         Route::post('/create', [ProjectController::class, 'postCreateProjectCategory'])->name('admin.project-categories.store');
         Route::get('/edit/{id}', [ProjectController::class, 'getEditProjectCategory'])->name('admin.project-categories.edit');

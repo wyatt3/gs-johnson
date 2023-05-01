@@ -1,6 +1,21 @@
 // Body
 $body-bg: #f8fafc;
 
+$theme-colors: (
+    "primary": #005E49,
+    'secondary': #231F20,
+    'dark': #003A2A,
+    'light': #FBB040,
+    'gold-main': #FBB040,
+    'gold-secondary': #FBDDB0,
+    "danger": #471d1b
+);
+
+$navbar-dark-color: #FBDDB0;
+$navbar-dark-hover-color: #ffcd82;
+$navbar-dark-active-color: #f6ddb9;
+$navbar-dark-brand-color: #FBB040;
+
 // Typography
 $font-family-sans-serif: 'Nunito', sans-serif;
 $font-size-base: 0.9rem;
