@@ -35,12 +35,15 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
+                        @guest
+                        @else
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('admin.project-categories.index') }}">Categories</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('admin.projects.index') }}">Projects</a>
                         </li>
+                        @endguest
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -50,12 +53,6 @@
                             <a class="nav-link" href="{{ route('home') }}">View Public Site</a>
                         </li>
                         @guest
-                        @if (Route::has('login'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        </li>
-                        @endif
-
                         @else
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
