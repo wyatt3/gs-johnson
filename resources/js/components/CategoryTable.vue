@@ -7,19 +7,21 @@
         <th scope="col">Delete</th>
       </tr>
     </thead>
-    <tr v-for="category in categories" :key="category.id">
-      <td>{{ category.name }}</td>
-      <td>
-        <button class="btn btn-warning" @clidk="editCategory(category.id)">
-          Edit
-        </button>
-      </td>
-      <td>
-        <button class="btn btn-danger" @click="deleteCategory(category.id)">
-          Delete
-        </button>
-      </td>
-    </tr>
+    <tbody>
+      <tr scope="row" v-for="category in categories" :key="category.id">
+        <td>{{ category.name }}</td>
+        <td>
+          <button class="btn btn-warning" @click="editCategory(category.id)">
+            Edit
+          </button>
+        </td>
+        <td>
+          <button class="btn btn-danger" @click="deleteCategory(category.id)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
   </table>
 </template>
 <script>
@@ -41,6 +43,30 @@ export default {
         console.log(error);
       })
       .finally(() => (this.loading = false));
+  },
+  methods: {
+    deleteCategory(id) {
+      axios
+        .post(
+          "/api/project-categories/delete",
+          {
+            id: id,
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
+        .then((response) => {
+          this.categories = this.categories.filter(
+            (category) => category.id !== id
+          );
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
   },
 };
 </script>

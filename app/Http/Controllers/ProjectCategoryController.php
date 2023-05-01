@@ -29,4 +29,15 @@ class ProjectCategoryController extends Controller
         $projectCategory = ProjectCategoryService::createProjectCategory($request->name, $request->order);
         return response()->json($projectCategory);
     }
+
+    public function postDeleteProjectCategory(Request $request)
+    {
+        $request->validate([
+            'id' => 'required'
+        ]);
+
+        $category = ProjectCategory::find($request->id);
+        $projectCategory = ProjectCategoryService::deleteProjectCategory($category);
+        return response()->json($projectCategory);
+    }
 }
