@@ -1,24 +1,26 @@
 <template>
-  <div class="bg-primary rounded p-3 pb-1 col-12 col-md-8 col-lg-6 mx-auto">
-    <div
-      class="d-flex text-gold-main justify-content-between border-bottom pb-1 border-gold-secondary"
-    >
-      <span>Category Name</span>
-      <span>
-        <span class="px-3">Edit</span>
-        <span class="px-3">Delete</span>
-      </span>
-    </div>
-    <div class="text-gold-secondary">
-      <draggable v-model="categories" @change="updateOrder">
-        <category-table-row
-          class="my-2"
-          v-for="category in categories"
-          :key="category.id"
-          :category="category"
-          :id="category.order"
-        ></category-table-row>
-      </draggable>
+  <div class="col-12 col-md-8 col-lg-6 mx-auto">
+    <h1 class="text-gold-main">Categories</h1>
+    <div class="bg-primary rounded p-3 pb-1">
+      <div
+        class="d-flex text-gold-main justify-content-between border-bottom pb-1 border-gold-secondary"
+      >
+        <span>Category Name</span>
+        <span>
+          <span class="px-3">Edit</span>
+          <span class="px-3">Delete</span>
+        </span>
+      </div>
+      <div class="text-gold-secondary">
+        <draggable v-model="categories" @change="updateOrder">
+          <category-table-row
+            class="my-2"
+            v-for="category in categories"
+            :key="category.id"
+            :category="category"
+          ></category-table-row>
+        </draggable>
+      </div>
     </div>
   </div>
 </template>
