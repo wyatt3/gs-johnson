@@ -11,3 +11,20 @@
 body {
     min-height: 100%;
 }
+
+input.form-control {
+    background-color: $primary !important;
+    color: $gold-secondary !important;
+}
+
+.btn-primary {
+    color: $gold-secondary !important;
+}
+
+.btn-warning {
+    color: $dark !important;
+}
+
+.btn-danger {
+    color: $gold-secondary !important;
+}
