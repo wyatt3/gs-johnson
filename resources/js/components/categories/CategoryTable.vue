@@ -12,6 +12,7 @@
         v-for="category in categories"
         :key="category.id"
         :category="category"
+        :id="category.order"
       ></category-table-row>
     </tbody>
   </table>

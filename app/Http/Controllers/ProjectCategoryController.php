@@ -30,10 +30,24 @@ class ProjectCategoryController extends Controller
         return response()->json($projectCategory);
     }
 
+    public function postEditProjectCategory(Request $request)
+    {
+        $request->validate([
+            'id' => 'required|exists:project_categories,id',
+            'name' => 'required|unique:project_categories,name',
+            'order' => 'required'
+        ]);
+
+        $category = ProjectCategory::find($request->id);
+        $projectCategory = ProjectCategoryService::editProjectCategory($category, $request->name, $request->order);
+
+        return response()->json($projectCategory);
+    }
+
     public function postDeleteProjectCategory(Request $request)
     {
         $request->validate([
-            'id' => 'required'
+            'id' => 'required|exists:project_categories,id'
         ]);
 
         $category = ProjectCategory::find($request->id);

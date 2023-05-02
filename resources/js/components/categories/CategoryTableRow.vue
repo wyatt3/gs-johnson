@@ -5,9 +5,7 @@
       <input v-show="edit" type="text" v-model="category.name" />
     </td>
     <td>
-      <button class="btn btn-warning" @click="editCategory(category.id)">
-        Edit
-      </button>
+      <button class="btn btn-warning" @click="editCategory()">Edit</button>
     </td>
     <td>
       <button class="btn btn-danger" @click="deleteCategory(category.id)">
@@ -25,13 +23,20 @@ export default {
     };
   },
   methods: {
-    editCategory(id) {},
-    deleteCategory(id) {
+    editCategory() {
+      this.edit = !this.edit;
+      if (!this.edit) {
+        this.updateCategory();
+      }
+    },
+    updateCategory() {
       axios
         .post(
-          "/api/project-categories/delete",
+          "/api/project-categories/update",
           {
-            id: id,
+            id: this.category.id,
+            name: this.category.name,
+            order: this.category.order,
           },
           {
             headers: {
@@ -40,13 +45,34 @@ export default {
           }
         )
         .then((response) => {
-          this.categories = this.categories.filter(
-            (category) => category.id !== id
-          );
+          console.log(response);
         })
         .catch((error) => {
           console.log(error);
         });
+    },
+    deleteCategory(id) {
+      if (confirm("Are you sure you want to delete this category?")) {
+        axios
+          .post(
+            "/api/project-categories/delete",
+            {
+              id: id,
+            },
+            {
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          )
+          .then((response) => {
+            this.$destroy();
+            this.$el.remove();
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
     },
   },
 };

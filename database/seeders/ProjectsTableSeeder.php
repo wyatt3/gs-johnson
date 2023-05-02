@@ -23,5 +23,8 @@ class ProjectsTableSeeder extends Seeder
             ->for(ProjectCategory::factory())
             ->count(5)
             ->create();
+        ProjectCategory::factory()
+            ->count(5)
+            ->create();
     }
 }
