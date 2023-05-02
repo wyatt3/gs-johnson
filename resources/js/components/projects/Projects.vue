@@ -1,8 +1,10 @@
 <template>
   <div class="col-12 col-md-8 col-lg-6 mx-auto">
     <h1 class="text-gold-main">Projects</h1>
+    <spinner v-if="loading"></spinner>
     <category-group
       class="text-gold-main"
+      v-else
       v-for="category in projectsByCategory"
       :key="category.name"
       :category="category.name"
@@ -12,8 +14,9 @@
 </template>
 <script>
 import CategoryGroup from "./CategoryGroup.vue";
+import Spinner from "../Spinner.vue";
 export default {
-  components: { CategoryGroup },
+  components: { CategoryGroup, Spinner },
   data() {
     return {
       loading: false,
@@ -26,7 +29,9 @@ export default {
     axios
       .get("/api/projects")
       .then((response) => {
-        this.projectsByCategory = response.data;
+        this.projectsByCategory = response.data.filter(
+          (category) => category.projects.length > 0
+        );
       })
       .catch((error) => {
         console.log(error);
