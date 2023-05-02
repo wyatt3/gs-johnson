@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-primary rounded p-3 pb-1">
+  <div class="bg-primary rounded p-3 pb-1 col-12 col-md-8 col-lg-6 mx-auto">
     <div
       class="d-flex text-gold-main justify-content-between border-bottom pb-1 border-gold-secondary"
     >
@@ -51,9 +51,6 @@ export default {
               },
             }
           )
-          .then((response) => {
-            console.log(response);
-          })
           .catch((error) => {
             console.log(error.response);
           });

@@ -1,12 +1,22 @@
 <template>
   <div class="d-flex justify-content-between">
-    <div>
+    <div class="d-flex align-items-center">
+      <i role="button" class="bi bi-grip-horizontal me-3"></i>
       <span role="button" v-show="!edit">{{ category.name }}</span>
-      <input v-show="edit" type="text" v-model="category.name" />
+      <input
+        class="form-control"
+        v-show="edit"
+        type="text"
+        v-model="category.name"
+      />
     </div>
     <div class="d-flex">
       <div class="mx-1">
-        <button class="btn btn-warning" @click="editCategory()">Edit</button>
+        <button
+          class="btn btn-warning"
+          @click="editCategory()"
+          v-text="edit ? 'Save' : 'Edit'"
+        ></button>
       </div>
       <div class="mx-1">
         <button class="btn btn-danger" @click="deleteCategory(category.id)">
@@ -46,9 +56,6 @@ export default {
             },
           }
         )
-        .then((response) => {
-          console.log(response);
-        })
         .catch((error) => {
           console.log(error);
         });
