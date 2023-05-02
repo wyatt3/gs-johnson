@@ -50,6 +50,22 @@ class ProjectService
     }
 
     /**
+     * update project order
+     *
+     * @param Project $project
+     * @param integer $order
+     * @return Project
+     */
+    public function updateProjectOrder(Project $project, int $order): Project
+    {
+        $project->update([
+            'order' => $order
+        ]);
+
+        return $project;
+    }
+
+    /**
      * delete project
      *
      * @param Project $project

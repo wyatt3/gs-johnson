@@ -12,12 +12,12 @@
         </span>
       </div>
       <draggable v-model="projects" @change="updateOrder">
-        <category-table-row
+        <project-table-row
           class="my-2"
           v-for="project in projects"
           :key="project.id"
-          :id="category.order"
-        ></category-table-row>
+          :project="project"
+        ></project-table-row>
       </draggable>
     </div>
   </div>
@@ -26,6 +26,35 @@
 import draggable from "vuedraggable";
 import ProjectTableRow from "./ProjectTableRow.vue";
 export default {
-  props: ["category", "projects"],
+  components: { ProjectTableRow, draggable },
+  props: ["category", "initialProjects"],
+  data() {
+    return {
+      projects: this.initialProjects,
+    };
+  },
+  methods: {
+    updateOrder() {
+      this.projects.forEach((project, index) => {
+        project.order = index + 1;
+        axios
+          .post(
+            "/api/projects/update-order",
+            {
+              id: project.id,
+              order: project.order,
+            },
+            {
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          )
+          .catch((error) => {
+            console.log(error.response);
+          });
+      });
+    },
+  },
 };
 </script>

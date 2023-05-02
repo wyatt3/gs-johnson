@@ -36,7 +36,7 @@ export default {
     };
   },
   methods: {
-    async updateOrder() {
+    updateOrder() {
       this.categories.forEach((category, index) => {
         category.order = index + 1;
         axios

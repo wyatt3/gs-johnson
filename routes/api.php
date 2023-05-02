@@ -20,8 +20,13 @@ Route::get('/project-categories', [ProjectCategoryController::class, 'getProject
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::prefix('/project-categories')->group(function () {
-        Route::post('/create', [ProjectCategoryController::class, 'postCreateProjectCategory'])->name('admin.project-categories.store');
-        Route::post('/update', [ProjectCategoryController::class, 'postEditProjectCategory'])->name('admin.project-categories.update');
-        Route::post('/delete', [ProjectCategoryController::class, 'postDeleteProjectCategory'])->name('admin.project-categories.delete');
+        Route::post('/create', [ProjectCategoryController::class, 'postCreateProjectCategory']);
+        Route::post('/update', [ProjectCategoryController::class, 'postEditProjectCategory']);
+        Route::post('/delete', [ProjectCategoryController::class, 'postDeleteProjectCategory']);
+    });
+
+    Route::prefix('/projects')->group(function () {
+        Route::post('/update-order', [ProjectController::class, 'postUpdateProjectOrder']);
+        Route::post('/delete', [ProjectController::class, 'postDeleteProject']);
     });
 });

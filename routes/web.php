@@ -31,7 +31,6 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
         Route::post('/create', [ProjectController::class, 'postCreateProject'])->name('admin.projects.store');
         Route::get('/edit/{id}', [ProjectController::class, 'getEditProject'])->name('admin.projects.edit');
         Route::post('/update', [ProjectController::class, 'postEditProject'])->name('admin.projects.update');
-        Route::post('/delete', [ProjectController::class, 'postDeleteProject'])->name('admin.projects.delete');
         Route::get('/{id}', [ProjectController::class, 'getProject'])->name('admin.project.get');
     });
 });

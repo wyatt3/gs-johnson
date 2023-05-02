@@ -3,10 +3,10 @@
     <h1 class="text-gold-main">Projects</h1>
     <category-group
       class="text-gold-main"
-      v-for="(projects, name) in projectsByCategory"
-      :key="name"
-      :category="name"
-      :projects="projects"
+      v-for="category in projectsByCategory"
+      :key="category.name"
+      :category="category.name"
+      :initialProjects="category.projects"
     ></category-group>
   </div>
 </template>
