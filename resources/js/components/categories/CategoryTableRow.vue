@@ -1,18 +1,20 @@
 <template>
-  <tr scope="row">
-    <td>
-      <span v-show="!edit">{{ category.name }}</span>
+  <div class="d-flex justify-content-between">
+    <div>
+      <span role="button" v-show="!edit">{{ category.name }}</span>
       <input v-show="edit" type="text" v-model="category.name" />
-    </td>
-    <td>
-      <button class="btn btn-warning" @click="editCategory()">Edit</button>
-    </td>
-    <td>
-      <button class="btn btn-danger" @click="deleteCategory(category.id)">
-        Delete
-      </button>
-    </td>
-  </tr>
+    </div>
+    <div class="d-flex">
+      <div class="mx-1">
+        <button class="btn btn-warning" @click="editCategory()">Edit</button>
+      </div>
+      <div class="mx-1">
+        <button class="btn btn-danger" @click="deleteCategory(category.id)">
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
 </template>
 <script>
 export default {

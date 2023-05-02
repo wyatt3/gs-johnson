@@ -34,7 +34,7 @@ class ProjectCategoryController extends Controller
     {
         $request->validate([
             'id' => 'required|exists:project_categories,id',
-            'name' => 'required|unique:project_categories,name',
+            'name' => 'required',
             'order' => 'required'
         ]);
 

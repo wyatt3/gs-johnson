@@ -1,31 +1,64 @@
 <template>
-  <table class="table bg-primary rounded">
-    <thead class="text-gold-main">
-      <tr>
-        <th scope="col">Category Name</th>
-        <th scope="col">Edit</th>
-        <th scope="col">Delete</th>
-      </tr>
-    </thead>
-    <tbody class="text-gold-secondary">
-      <category-table-row
-        v-for="category in categories"
-        :key="category.id"
-        :category="category"
-        :id="category.order"
-      ></category-table-row>
-    </tbody>
-  </table>
+  <div class="bg-primary rounded p-3 pb-1">
+    <div
+      class="d-flex text-gold-main justify-content-between border-bottom pb-1 border-gold-secondary"
+    >
+      <span>Category Name</span>
+      <span>
+        <span class="px-3">Edit</span>
+        <span class="px-3">Delete</span>
+      </span>
+    </div>
+    <div class="text-gold-secondary">
+      <draggable v-model="categories" @change="updateOrder">
+        <category-table-row
+          class="my-2"
+          v-for="category in categories"
+          :key="category.id"
+          :category="category"
+          :id="category.order"
+        ></category-table-row>
+      </draggable>
+    </div>
+  </div>
 </template>
 <script>
 import CategoryTableRow from "./CategoryTableRow.vue";
+import draggable from "vuedraggable";
 export default {
-  components: { CategoryTableRow },
+  components: { CategoryTableRow, draggable },
   data() {
     return {
       loading: false,
       categories: [],
     };
+  },
+  methods: {
+    async updateOrder() {
+      this.categories.forEach((category, index) => {
+        category.order = index + 1;
+        axios
+          .post(
+            "/api/project-categories/update",
+            {
+              id: category.id,
+              name: category.name,
+              order: category.order,
+            },
+            {
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          )
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((error) => {
+            console.log(error.response);
+          });
+      });
+    },
   },
   mounted() {
     this.loading = true;
