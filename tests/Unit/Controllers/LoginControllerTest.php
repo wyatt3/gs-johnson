@@ -19,4 +19,11 @@ class LoginControllerTest extends TestCase
 
         $response->assertStatus(302);
     }
+
+    public function testRedirectOnNotAuthenticated()
+    {
+        $response = $this->get('/admin');
+
+        $response->assertStatus(302);
+    }
 }
