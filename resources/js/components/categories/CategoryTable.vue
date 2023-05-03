@@ -1,5 +1,5 @@
 <template>
-  <div class="col-12 col-md-8 col-lg-6 mx-auto">
+  <div>
     <h1 class="text-gold-main">Categories</h1>
     <div class="d-flex mb-2">
       <button

@@ -1,6 +1,5 @@
 <template>
-  <div class="col-12 col-md-8 col-lg-6 mx-auto">
-    <h1 class="text-gold-main">Projects</h1>
+  <div>
     <spinner v-if="loading"></spinner>
     <category-group
       class="text-gold-main"

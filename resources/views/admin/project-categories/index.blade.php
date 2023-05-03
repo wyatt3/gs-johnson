@@ -1,7 +1,5 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="container">
-    <category-table></category-table>
-</div>
+<category-table></category-table>
 @endsection
