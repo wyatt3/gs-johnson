@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Facades\ProjectMediaService;
 use App\Models\Project;
 use App\Models\ProjectCategory;
+use Symfony\Component\HttpFoundation\FileBag;
 
 class ProjectService
 {
@@ -17,14 +18,20 @@ class ProjectService
      * @param integer $order
      * @return Project
      */
-    public function createProject(string $name, string $description, ProjectCategory $category, int $order): Project
+    public function createProject(string $name, string $description, ProjectCategory $category, int $order, array $files = []): Project
     {
-        return Project::create([
+
+        $project = Project::create([
             'title' => $name,
             'description' => $description,
             'category_id' => $category->getKey(),
             'order' => $order
         ]);
+        foreach ($files as $index => $file) {
+            $file = ProjectMediaService::createProjectMedia($project, $file, $index + 1);
+        }
+
+        return $project;
     }
 
     /**

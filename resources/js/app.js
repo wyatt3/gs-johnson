@@ -21,6 +21,7 @@ window.Vue = require('vue').default;
 
 Vue.component('category-table', require('./components/categories/CategoryTable.vue').default);
 Vue.component('projects', require('./components/projects/Projects.vue').default);
+Vue.component('FileUpload', require('./components/FileUpload.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

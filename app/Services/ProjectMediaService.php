@@ -38,6 +38,23 @@ class ProjectMediaService
     }
 
     /**
+     * update project media order
+     *
+     * @param ProjectMedia $media
+     * @param UploadedFile $file
+     * @param integer $order
+     * @return ProjectMedia
+     */
+    public function updateProjectMediaOrder(ProjectMedia $media, int $order): ProjectMedia
+    {
+        $media->update([
+            'order' => $order
+        ]);
+
+        return $media;
+    }
+
+    /**
      * delete project media
      *
      * @param ProjectMedia $media

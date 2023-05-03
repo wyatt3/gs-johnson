@@ -12,6 +12,12 @@ body {
     min-height: 100%;
 }
 
+form label {
+    color: $gold-main !important;
+}
+
+textarea.form-control,
+select.form-control,
 input.form-control {
     background-color: $primary !important;
     color: $gold-secondary !important;

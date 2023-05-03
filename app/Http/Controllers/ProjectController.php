@@ -28,7 +28,8 @@ class ProjectController extends Controller
 
     public function getCreateProject()
     {
-        return view('admin.projects.create');
+        $categories = ProjectCategory::orderBy('name')->get();
+        return view('admin.projects.create', ['categories' => $categories]);
     }
 
     public function postCreateProject(Request $request)
@@ -36,11 +37,15 @@ class ProjectController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'category_id' => 'required',
-            'order' => 'required'
+            'category_id' => 'required|exists:project_categories,id',
+            'uploadedFiles' => 'array'
         ]);
-        $project = Project::create($request->all());
-        return response()->json($project);
+
+        $category = ProjectCategory::findOrFail($request->category_id);
+        $lastProjectInCategory = Project::where('category_id', $category->getKey())->orderBy('order', 'desc')->first();
+
+        ProjectService::createProject($request->title, $request->description, $category, $lastProjectInCategory ? $lastProjectInCategory->order + 1 : 1, $request->uploadedFiles);
+        return redirect()->route('admin.projects.index');
     }
 
     public function postUpdateProjectOrder(Request $request)
