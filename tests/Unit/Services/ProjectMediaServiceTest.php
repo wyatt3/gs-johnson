@@ -33,6 +33,16 @@ class ProjectMediaServiceTest extends TestCase
         ]);
     }
 
+    public function testUpdateProjectMediaOrder()
+    {
+        $media = ProjectMedia::factory()->create();
+        $newOrder = $this->faker->numberBetween(1, 10);
+
+        $media = ProjectMediaService::updateProjectMediaOrder($media, $newOrder);
+
+        $this->assertEquals($newOrder, $media->order);
+    }
+
     public function testDeleteProjectMedia()
     {
         Storage::fake('media');

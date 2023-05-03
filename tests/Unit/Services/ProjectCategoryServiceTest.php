@@ -3,7 +3,6 @@
 namespace Tests\Unit;
 
 use App\Facades\ProjectCategoryService;
-use App\Models\Project;
 use App\Models\ProjectCategory;
 use Tests\TestCase;
 

@@ -4,19 +4,27 @@ namespace Tests\Unit;
 
 use App\Facades\ProjectService;
 use App\Models\Project;
+use App\Services\ProjectMediaService;
+use Illuminate\Http\UploadedFile;
 use Tests\TestCase;
 
 class ProjectServiceTest extends TestCase
 {
     public function testCreateProject()
     {
+        $this->mock(ProjectMediaService::class, function ($mock) {
+            $mock->shouldReceive('createProjectMedia')->once();
+        });
+
         $project = Project::factory()->make();
+        $image = UploadedFile::fake()->image($this->faker->word() . '.jpg');
 
         ProjectService::createProject(
             $project->title,
             $project->description,
             $project->projectCategory,
-            $project->order
+            $project->order,
+            [$image]
         );
 
         $this->assertDatabaseHas('projects', [
@@ -42,6 +50,16 @@ class ProjectServiceTest extends TestCase
 
         $project->refresh();
         $this->assertEquals($project->toArray(), $response->toArray());
+    }
+
+    public function testUpdateProjectOrder()
+    {
+        $project = Project::factory()->create();
+        $newOrder = $this->faker->numberBetween(1, 10);
+
+        $project = ProjectService::updateProjectOrder($project, $newOrder);
+
+        $this->assertEquals($newOrder, $project->order);
     }
 
     public function testDeleteProject()
