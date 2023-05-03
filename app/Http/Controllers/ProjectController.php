@@ -20,12 +20,6 @@ class ProjectController extends Controller
         return view('admin.projects.index');
     }
 
-    public function getProject($id)
-    {
-        $project = Project::with(['media'])->find($id);
-        return response()->json($project);
-    }
-
     public function getCreateProject()
     {
         $categories = ProjectCategory::orderBy('name')->get();
