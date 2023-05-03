@@ -10,21 +10,21 @@
     @endforeach
 </div>
 @endif
-<form action="{{ route('admin.projects.store') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('admin.projects.update') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <label class="mt-2 mb-1" for="category">Project Category</label>
     <select class="form-control" id="category" name="category_id">
         <option value="">Select a category</option>
         @foreach ($categories as $category)
-        <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
+        <option value="{{ $category->id }}" {{ $project->projectCategory->getKey() == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
         @endforeach
     </select>
     <label class="mt-2 mb-1" for="title">Project Title</label>
-    <input type="text" class="form-control" id="title" name="title" placeholder="Enter project title" value="{{ old('title') }}">
+    <input type="text" class="form-control" id="title" name="title" placeholder="Enter project title" value="{{ $project->title }}">
     <label class="mt-2 mb-1" for="description">Project Description</label>
-    <textarea class="form-control" id="description" name="description" rows="8" placeholder="Enter project description">{{ old('description') }}</textarea>
-    <label class="mt-2 mb-1" for="images">Project Media</label>
+    <textarea class="form-control" id="description" name="description" rows="8" placeholder="Enter project description">{{ $project->description }}</textarea>
+    <label class="mt-2 mb-1" for="images">Add Project Media</label>
     <file-upload></file-upload>
-    <input type="submit" class="btn btn-gold-main mt-2" value="Create Project">
+    <input type="submit" class="btn btn-gold-main mt-2" value="Update Project">
 </form>
 @endsection

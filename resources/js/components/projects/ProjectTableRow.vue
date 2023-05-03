@@ -6,7 +6,9 @@
     </div>
     <div class="d-flex">
       <div class="mx-1">
-        <a class="btn btn-warning">Edit</a>
+        <a class="btn btn-warning" :href="'/admin/projects/edit/' + project.id">
+          Edit
+        </a>
       </div>
       <div class="mx-1">
         <button class="btn btn-danger" @click="deleteProject(project.id)">

@@ -42,6 +42,30 @@ class ProjectController extends Controller
         return redirect()->route('admin.projects.index');
     }
 
+    public function getEditProject($id)
+    {
+        $categories = ProjectCategory::orderBy('name')->get();
+        $project = Project::find($id)->load(['media']);
+        return view('admin.projects.edit', ['project' => $project, 'categories' => $categories]);
+    }
+
+    public function postEditProject(Request $request)
+    {
+        $request->validate([
+            'id' => 'required|exists:projects,id',
+            'title' => 'required',
+            'description' => 'required',
+            'category_id' => 'required|exists:project_categories,id',
+            'uploadedFiles' => 'array'
+        ]);
+
+        $project = Project::find($request->id);
+        $category = ProjectCategory::findOrFail($request->category_id);
+
+        ProjectService::updateProject($project, $request->title, $request->description, $category, $request->uploadedFiles);
+        return redirect()->route('admin.projects.index');
+    }
+
     public function postUpdateProjectOrder(Request $request)
     {
         $request->validate([
