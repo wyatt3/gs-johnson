@@ -37,6 +37,10 @@ class ProjectServiceTest extends TestCase
 
     public function testUpdateProject()
     {
+        $this->mock(ProjectMediaService::class, function ($mock) {
+            $mock->shouldReceive('createProjectMedia')->once();
+        });
+        $image = UploadedFile::fake()->image($this->faker->word() . '.jpg');
         $project = Project::factory()->create();
         $newProject = Project::factory()->make();
 
@@ -45,7 +49,7 @@ class ProjectServiceTest extends TestCase
             $newProject->title,
             $newProject->description,
             $newProject->projectCategory,
-            null
+            [$image]
         );
 
         $project->refresh();
