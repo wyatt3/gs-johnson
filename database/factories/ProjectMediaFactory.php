@@ -17,7 +17,7 @@ class ProjectMediaFactory extends Factory
         return [
             'project_id' => Project::factory(),
             'order' => $this->faker->numberBetween(1, 10),
-            'path' => $this->faker->image('public/storage/media', 10, 10, null, false)
+            'path' => $this->faker->image('public/storage/media', 1, 1, null, false)
         ];
     }
 }

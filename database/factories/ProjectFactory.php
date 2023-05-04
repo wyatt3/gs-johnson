@@ -27,10 +27,7 @@ class ProjectFactory extends Factory
     public function withMedia()
     {
         return $this->afterCreating(function (Project $project) {
-            $media = ProjectMedia::factory()->count(2)->make();
-            foreach ($media as $photo) {
-                $project->media()->save($photo);
-            }
+            ProjectMedia::factory()->for($project)->count(2)->create();
         });
     }
 }

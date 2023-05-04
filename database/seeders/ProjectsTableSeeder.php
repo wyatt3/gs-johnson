@@ -17,11 +17,13 @@ class ProjectsTableSeeder extends Seeder
     {
         Project::factory()
             ->for(ProjectCategory::factory())
-            ->count(5)
+            ->withMedia()
+            ->count(2)
             ->create();
         Project::factory()
             ->for(ProjectCategory::factory())
-            ->count(5)
+            ->withMedia()
+            ->count(2)
             ->create();
     }
 }

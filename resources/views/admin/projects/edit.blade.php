@@ -27,4 +27,5 @@
     <file-upload></file-upload>
     <input type="submit" class="btn btn-gold-main mt-2" value="Update Project">
 </form>
+<project-media v-bind:initial-media="{{json_encode($project->media)}}"></project-media>
 @endsection
