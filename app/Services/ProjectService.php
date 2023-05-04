@@ -55,7 +55,7 @@ class ProjectService
         if ($files) {
             $order = $project->media()->count();
             foreach ($files as $file) {
-                $file = ProjectMediaService::createProjectMedia($project, $file, $order++);
+                ProjectMediaService::createProjectMedia($project, $file, $order++);
             }
         }
 
