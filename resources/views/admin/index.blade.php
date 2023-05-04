@@ -21,8 +21,9 @@
         <div class="left-side">
             <h3 class="text-center">Left Side</h3>
             <form>
+                <input type="hidden" name="filename" value="left">
                 <label>Displayed Name</label>
-                <input class="form-control mb-2" type="text" name="name" placeholder="Displayed Name">
+                <input class="form-control mb-2" type="text" name="displayName" placeholder="Displayed Name">
                 <label>URL</label>
                 <input class="form-control mb-2" type="text" name="url" placeholder="URL">
                 <input class="btn btn-primary" type="submit" value="Update">
@@ -31,8 +32,9 @@
         <div class="right-side">
             <h3 class="text-center">Right Side</h3>
             <form>
+                <input type="hidden" name="filename" value="right">
                 <label>Displayed Name</label>
-                <input class="form-control mb-2" type="text" name="name" placeholder="Displayed Name">
+                <input class="form-control mb-2" type="text" name="displayName" placeholder="Displayed Name">
                 <label>URL</label>
                 <input class="form-control mb-2" type="text" name="url" placeholder="URL">
                 <input class="btn btn-primary" type="submit" value="Update">

@@ -31,4 +31,15 @@ class Controller extends BaseController
         AdminService::updateResume($request->resume);
         return redirect()->route('admin');
     }
+
+    public function postAdminUpdateSocialLink(Request $request)
+    {
+        $request->validate([
+            'filename' => 'required|string',
+            'displayName' => 'required|string',
+            'url' => 'required|url'
+        ]);
+        AdminService::updateSocialLinks($request->filename, $request->displayName, $request->url);
+        return redirect()->route('admin');
+    }
 }
