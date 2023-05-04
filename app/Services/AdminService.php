@@ -1,0 +1,20 @@
+<?php
+
+namespace App\Services;
+
+use Illuminate\Http\UploadedFile;
+
+class AdminService
+{
+    /**
+     * update resume
+     *
+     * @param UploadedFile $resume
+     * @return void
+     */
+    public function updateResume(UploadedFile $resume): bool
+    {
+        $resume->storeAs('public/', 'GracieJohnson.pdf');
+        return true;
+    }
+}
