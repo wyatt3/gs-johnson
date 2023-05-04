@@ -35,4 +35,19 @@ class ControllerTest extends TestCase
 
         $response->assertStatus(302);
     }
+
+    public function testPostAdminUpdateSocialLink()
+    {
+        $this->mock(AdminService::class, function ($mock) {
+            $mock->shouldReceive('updateSocialLink')->once();
+        });
+        $this->actingAs($this->user);
+        $response = $this->post(route('admin.social.update'), [
+            'filename' => $this->faker->word(),
+            'displayName' => $this->faker->word(),
+            'url' => $this->faker->url()
+        ]);
+
+        $response->assertStatus(302);
+    }
 }

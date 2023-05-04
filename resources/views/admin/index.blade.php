@@ -20,23 +20,23 @@
     <div class="d-flex justify-content-evenly">
         <div class="left-side">
             <h3 class="text-center">Left Side</h3>
-            <form>
+            <form action="{{ route('admin.social.update') }}" method="POST">
                 <input type="hidden" name="filename" value="left">
                 <label>Displayed Name</label>
-                <input class="form-control mb-2" type="text" name="displayName" placeholder="Displayed Name">
+                <input class="form-control mb-2" type="text" name="displayName" placeholder="Displayed Name" value="{{ $left['displayName'] ?? '' }}">
                 <label>URL</label>
-                <input class="form-control mb-2" type="text" name="url" placeholder="URL">
+                <input class=" form-control mb-2" type="text" name="url" placeholder="URL" value="{{ $left['url'] ?? '' }}">
                 <input class="btn btn-primary" type="submit" value="Update">
             </form>
         </div>
         <div class="right-side">
             <h3 class="text-center">Right Side</h3>
-            <form>
+            <form action="{{ route('admin.social.update') }}" method="POST">
                 <input type="hidden" name="filename" value="right">
                 <label>Displayed Name</label>
-                <input class="form-control mb-2" type="text" name="displayName" placeholder="Displayed Name">
+                <input class="form-control mb-2" type="text" name="displayName" placeholder="Displayed Name" value="{{ $right['displayName'] ?? '' }}">
                 <label>URL</label>
-                <input class="form-control mb-2" type="text" name="url" placeholder="URL">
+                <input class="form-control mb-2" type="text" name="url" placeholder="URL" value="{{ $right['url'] ?? '' }}">
                 <input class="btn btn-primary" type="submit" value="Update">
             </form>
         </div>

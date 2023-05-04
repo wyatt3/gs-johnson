@@ -35,4 +35,5 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
     });
 
     Route::post('/update-resume', [Controller::class, 'postAdminUpdateResume'])->name('admin.resume.update');
+    Route::post('/update-social-link', [Controller::class, 'postAdminUpdateSocialLink'])->name('admin.social.update');
 });

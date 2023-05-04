@@ -20,7 +20,12 @@ class Controller extends BaseController
 
     public function adminIndex()
     {
-        return view('admin.index');
+        $left = file_exists(__DIR__ . '/../../../social/left.json') ? json_decode(file_get_contents(__DIR__ . '/../../../social/left.json')) : [];
+        $right = file_exists(__DIR__ . '/../../../social/right.json') ? json_decode(file_get_contents(__DIR__ . '/../../../social/right.json')) : [];
+        return view('admin.index', [
+            'left' => $left,
+            'right' => $right
+        ]);
     }
 
     public function postAdminUpdateResume(Request $request)
