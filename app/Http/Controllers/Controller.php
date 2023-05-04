@@ -26,9 +26,9 @@ class Controller extends BaseController
     public function postAdminUpdateResume(Request $request)
     {
         $request->validate([
-            'resume' => 'required'
+            'resume' => 'required|file|mimes:pdf'
         ]);
         AdminService::updateResume($request->resume);
-        return redirect()->route('admin.home');
+        return redirect()->route('admin');
     }
 }
