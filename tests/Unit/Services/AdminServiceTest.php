@@ -17,12 +17,12 @@ class AdminServiceTest extends TestCase
         $this->assertTrue($response);
     }
 
-    public function testUpdateSocialLinks()
+    public function testUpdateSocialLink()
     {
         $filename = $this->faker->word();
         $displayName = $this->faker->word();
         $url = $this->faker->url();
-        $response = AdminService::updateSocialLinks($filename, $displayName, $url);
+        $response = AdminService::updateSocialLink($filename, $displayName, $url);
         $this->assertTrue($response);
 
         $json = json_decode(file_get_contents(__DIR__ . "/../../../social/$filename.json"));

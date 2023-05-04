@@ -19,14 +19,14 @@ class AdminService
     }
 
     /**
-     * update social links
+     * update a social link
      *
      * @param string $filepath
      * @param string $displayName
      * @param string $url
      * @return bool
      */
-    public function updateSocialLinks(string $filename, string $displayName, string $url): bool
+    public function updateSocialLink(string $filename, string $displayName, string $url): bool
     {
         $json = json_encode([
             'displayName' => $displayName,

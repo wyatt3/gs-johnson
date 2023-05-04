@@ -39,7 +39,7 @@ class Controller extends BaseController
             'displayName' => 'required|string',
             'url' => 'required|url'
         ]);
-        AdminService::updateSocialLinks($request->filename, $request->displayName, $request->url);
+        AdminService::updateSocialLink($request->filename, $request->displayName, $request->url);
         return redirect()->route('admin');
     }
 }
