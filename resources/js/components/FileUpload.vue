@@ -10,7 +10,7 @@
     />
     <div class="preview-images row mt-2">
       <img
-        class="col-12 col-md-8 col-lg-6"
+        class="col-12 col-md-8 col-lg-6 mb-2"
         v-for="file in files"
         :src="file"
         :key="file"

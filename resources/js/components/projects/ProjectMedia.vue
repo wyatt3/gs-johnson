@@ -1,6 +1,11 @@
 <template>
-  <draggable class="row" v-model="media" @change="updateOrder">
-    <img :src="'/media/' + img.path" v-for="img in media" :key="img.id" />
+  <draggable class="row mt-3" v-model="media" @change="updateOrder">
+    <img
+      class="col-12 col-md-8 col-lg-6 mb-2"
+      :src="'/media/' + img.path"
+      v-for="img in media"
+      :key="img.id"
+    />
   </draggable>
 </template>
 
@@ -19,7 +24,7 @@ export default {
     updateOrder() {
       this.media.forEach((media, index) => {
         axios
-          .patch(`/api/media/${media.id}`, {
+          .patch(`/api/media/updateOrder/${media.id}`, {
             order: index + 1,
           })
           .then((response) => {

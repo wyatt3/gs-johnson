@@ -29,4 +29,9 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/update-order', [ProjectController::class, 'postUpdateProjectOrder']);
         Route::post('/delete', [ProjectController::class, 'postDeleteProject']);
     });
+
+    Route::prefix('/project-media')->group(function () {
+        Route::post('/update-order', [ProjectController::class, 'postUpdateProjectMediaOrder']);
+        Route::post('/delete', [ProjectController::class, 'postDeleteProjectMedia']);
+    });
 });

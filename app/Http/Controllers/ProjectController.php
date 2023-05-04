@@ -49,7 +49,7 @@ class ProjectController extends Controller
         return view('admin.projects.edit', ['project' => $project, 'categories' => $categories]);
     }
 
-    public function postEditProject(Request $request)
+    public function postUpdateProject(Request $request)
     {
         $request->validate([
             'id' => 'required|exists:projects,id',

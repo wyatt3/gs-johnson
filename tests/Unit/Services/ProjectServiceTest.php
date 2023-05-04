@@ -35,17 +35,17 @@ class ProjectServiceTest extends TestCase
         ]);
     }
 
-    public function testEditProject()
+    public function testUpdateProject()
     {
         $project = Project::factory()->create();
         $newProject = Project::factory()->make();
 
-        $response = ProjectService::editProject(
+        $response = ProjectService::updateProject(
             $project,
             $newProject->title,
             $newProject->description,
             $newProject->projectCategory,
-            $newProject->order
+            null
         );
 
         $project->refresh();

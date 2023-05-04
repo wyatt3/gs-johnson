@@ -44,14 +44,20 @@ class ProjectService
      * @param integer $order
      * @return Project
      */
-    public function editProject(Project $project, string $name, string $description, ProjectCategory $category, int $order): Project
+    public function updateProject(Project $project, string $name, string $description, ProjectCategory $category, ?array $files): Project
     {
         $project->update([
             'title' => $name,
             'description' => $description,
             'category_id' => $category->getKey(),
-            'order' => $order
         ]);
+
+        if ($files) {
+            $order = $project->media()->count();
+            foreach ($files as $file) {
+                $file = ProjectMediaService::createProjectMedia($project, $file, $order++);
+            }
+        }
 
         return $project;
     }
