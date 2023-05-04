@@ -48,6 +48,33 @@ class ProjectControllerTest extends TestCase
         $response->assertStatus(302);
     }
 
+    public function testGetEditProject()
+    {
+        $project = Project::factory()->create();
+        $this->actingAs($this->user);
+        $response = $this->get(route('admin.projects.edit', ['id' => $project->getKey()]));
+
+        $response->assertStatus(200);
+    }
+
+    public function testPostUpdateProject()
+    {
+        $project = Project::factory()->create();
+        $this->mock(ProjectService::class, function ($mock) {
+            $mock->shouldReceive('updateProject')->once();
+        });
+        $this->actingAs($this->user);
+        $response = $this->post(route('admin.projects.update'), [
+            'id' => $project->getKey(),
+            'title' => $this->faker->word(),
+            'description' => $this->faker->sentence(),
+            'category_id' => ProjectCategory::factory()->create()->getKey(),
+            'uploadedFiles' => []
+        ]);
+
+        $response->assertStatus(302);
+    }
+
     public function testPostUpdateProjectOrder()
     {
         $project = Project::factory()->create();
