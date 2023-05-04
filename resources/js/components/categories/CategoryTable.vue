@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="text-gold-main">Categories</h1>
+    <h1>Categories</h1>
     <div class="d-flex mb-2">
       <button
         class="btn btn-primary me-2"

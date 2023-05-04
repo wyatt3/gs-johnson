@@ -16,7 +16,13 @@ form label {
     color: $gold-main !important;
 }
 
-textarea.form-control,
+h1,
+h2,
+h3 {
+    color: $gold-main !important;
+}
+
+h2 textarea.form-control,
 select.form-control,
 input.form-control {
     background-color: $primary !important;
