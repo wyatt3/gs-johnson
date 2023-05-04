@@ -8,6 +8,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
+use stdClass;
 
 class Controller extends BaseController
 {
@@ -20,8 +21,8 @@ class Controller extends BaseController
 
     public function adminIndex()
     {
-        $left = file_exists(__DIR__ . '/../../../social/left.json') ? json_decode(file_get_contents(__DIR__ . '/../../../social/left.json')) : [];
-        $right = file_exists(__DIR__ . '/../../../social/right.json') ? json_decode(file_get_contents(__DIR__ . '/../../../social/right.json')) : [];
+        $left = file_exists(__DIR__ . '/../../../social/left.json') ? json_decode(file_get_contents(__DIR__ . '/../../../social/left.json')) : new stdClass;
+        $right = file_exists(__DIR__ . '/../../../social/right.json') ? json_decode(file_get_contents(__DIR__ . '/../../../social/right.json')) : new stdClass;
         return view('admin.index', [
             'left' => $left,
             'right' => $right

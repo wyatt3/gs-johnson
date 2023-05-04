@@ -2,6 +2,13 @@
 
 @section('content')
 <h1>Admin</h1>
+@if ($errors->any())
+<div class="alert alert-danger mt-3">
+    @foreach ($errors->all() as $error)
+    <div>{{$error}}</div>
+    @endforeach
+</div>
+@endif
 <div class="resume mb-4">
     @if(file_exists(public_path('/storage/GracieJohnson.pdf')))
     <h2>Resume</h2>
@@ -21,22 +28,24 @@
         <div class="left-side">
             <h3 class="text-center">Left Side</h3>
             <form action="{{ route('admin.social.update') }}" method="POST">
+                @csrf
                 <input type="hidden" name="filename" value="left">
                 <label>Displayed Name</label>
-                <input class="form-control mb-2" type="text" name="displayName" placeholder="Displayed Name" value="{{ $left['displayName'] ?? '' }}">
+                <input class="form-control mb-2" type="text" name="displayName" placeholder="Displayed Name" value="{{ $left->displayName ?? '' }}">
                 <label>URL</label>
-                <input class=" form-control mb-2" type="text" name="url" placeholder="URL" value="{{ $left['url'] ?? '' }}">
+                <input class=" form-control mb-2" type="text" name="url" placeholder="URL" value="{{ $left->url ?? '' }}">
                 <input class="btn btn-primary" type="submit" value="Update">
             </form>
         </div>
         <div class="right-side">
             <h3 class="text-center">Right Side</h3>
             <form action="{{ route('admin.social.update') }}" method="POST">
+                @csrf
                 <input type="hidden" name="filename" value="right">
                 <label>Displayed Name</label>
-                <input class="form-control mb-2" type="text" name="displayName" placeholder="Displayed Name" value="{{ $right['displayName'] ?? '' }}">
+                <input class="form-control mb-2" type="text" name="displayName" placeholder="Displayed Name" value="{{ $right->displayName ?? '' }}">
                 <label>URL</label>
-                <input class="form-control mb-2" type="text" name="url" placeholder="URL" value="{{ $right['url'] ?? '' }}">
+                <input class="form-control mb-2" type="text" name="url" placeholder="URL" value="{{ $right->url ?? '' }}">
                 <input class="btn btn-primary" type="submit" value="Update">
             </form>
         </div>
