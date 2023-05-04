@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProjectCategoryController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ProjectMediaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,7 +32,7 @@ Route::middleware('auth:sanctum')->group(function () {
     });
 
     Route::prefix('/project-media')->group(function () {
-        Route::post('/update-order', [ProjectController::class, 'postUpdateProjectMediaOrder']);
-        Route::post('/delete', [ProjectController::class, 'postDeleteProjectMedia']);
+        Route::post('/update-order', [ProjectMediaController::class, 'postUpdateProjectMediaOrder']);
+        Route::post('/delete', [ProjectMediaController::class, 'postDeleteProjectMedia']);
     });
 });

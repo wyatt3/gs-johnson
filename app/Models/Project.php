@@ -23,6 +23,6 @@ class Project extends Model
 
     public function media()
     {
-        return $this->hasMany(ProjectMedia::class);
+        return $this->hasMany(ProjectMedia::class)->orderBy('order');
     }
 }

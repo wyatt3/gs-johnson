@@ -24,7 +24,8 @@ export default {
     updateOrder() {
       this.media.forEach((media, index) => {
         axios
-          .patch(`/api/media/updateOrder/${media.id}`, {
+          .post("/api/project-media/update-order", {
+            id: media.id,
             order: index + 1,
           })
           .then((response) => {
