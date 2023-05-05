@@ -100,3 +100,28 @@ input.form-control {
 .ornament-bottom {
     margin-top: -15px;
 }
+
+@media screen and (max-width: 768px) {
+    .title {
+        font-size: 35px;
+        margin-top: -5px;
+        margin-bottom: 0px;
+        line-height: 35px;
+    }
+
+    .subtitle {
+        font-size: 20px;
+        line-height: 20px;
+    }
+
+    footer {
+        flex-direction: column;
+        align-items: center;
+        position: unset;
+    }
+
+    .footer-link {
+        border: none;
+        width: 50%;
+    }
+}
