@@ -7,7 +7,7 @@
     <span class="subtitle">Design Portfolio</span>
     <img width="100%" class="ornament-bottom" src="{{ asset('img/ornament.png') }}" aria-hidden>
 </header>
-<category-nav></category-nav>
+<category-section></category-section>
 
 
 <footer class="bg-primary d-flex justify-content-center py-2">

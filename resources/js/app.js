@@ -19,10 +19,16 @@ window.Vue = require('vue').default;
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('category-table', require('./components/categories/CategoryTable.vue').default);
-Vue.component('projects', require('./components/projects/Projects.vue').default);
+
+// Admin Components
+Vue.component('CategoryTable', require('./components/categories/CategoryTable.vue').default);
+Vue.component('Projects', require('./components/projects/Projects.vue').default);
 Vue.component('FileUpload', require('./components/FileUpload.vue').default);
 Vue.component('projectMedia', require('./components/projects/ProjectMedia.vue').default);
+
+
+// Public Components
+Vue.component('CategorySection', require('./components/public/CategorySection.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

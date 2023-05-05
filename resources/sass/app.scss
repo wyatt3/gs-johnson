@@ -102,6 +102,10 @@ input.form-control {
 }
 
 @media screen and (max-width: 768px) {
+    body {
+        min-height: 100vh;
+    }
+
     .title {
         font-size: 35px;
         margin-top: -5px;
