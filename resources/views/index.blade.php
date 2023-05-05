@@ -7,9 +7,9 @@
     <span class="subtitle">Design Portfolio</span>
     <img width="100%" class="ornament-bottom" src="{{ asset('img/ornament.png') }}" aria-hidden>
 </header>
-<category-section></category-section>
-
-
+<div class="content">
+    <category-section></category-section>
+</div>
 <footer class="bg-primary d-flex justify-content-center py-2">
     @if($left)
     <a href="{{ $left->url }}" target="_blank" class="footer-link footer-link-outer">{{ $left->displayName }}</a>

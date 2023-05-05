@@ -102,8 +102,14 @@ input.form-control {
 }
 
 @media screen and (max-width: 768px) {
-    body {
+    #app {
+        display: flex;
+        flex-direction: column;
         min-height: 100vh;
+    }
+
+    .content {
+        flex: 1;
     }
 
     .title {
