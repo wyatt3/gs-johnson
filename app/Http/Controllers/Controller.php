@@ -16,7 +16,12 @@ class Controller extends BaseController
 
     public function index()
     {
-        return view('index');
+        $left = file_exists(__DIR__ . '/../../../social/left.json') ? json_decode(file_get_contents(__DIR__ . '/../../../social/left.json')) : null;
+        $right = file_exists(__DIR__ . '/../../../social/right.json') ? json_decode(file_get_contents(__DIR__ . '/../../../social/right.json')) : null;
+        return view('index', [
+            'left' => $left,
+            'right' => $right
+        ]);
     }
 
     public function adminIndex()

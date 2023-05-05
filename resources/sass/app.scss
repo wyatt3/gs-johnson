@@ -25,8 +25,32 @@ body {
     font-size: 1em;
 }
 
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.footer-link {
+    color: $gold-secondary;
+    text-decoration: none;
+    width: 25%;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.footer-link:hover {
+    color: lighten($gold-secondary, 15%);
+}
+
+.footer-link-outer {
+    border-left: solid 1px $gold-secondary;
+    border-right: solid 1px $gold-secondary;
+}
+
 form label {
-    color: $gold-main !important;
+    color: $gold-main;
 }
 
 .navbar-brand {
@@ -38,7 +62,7 @@ h1,
 h2,
 h3 {
     font-family: 'Broadway';
-    color: $gold-main !important;
+    color: $gold-main;
 }
 
 h2 textarea.form-control,
@@ -62,7 +86,17 @@ input.form-control {
 
 .title {
     margin-top: -10px;
+    margin-bottom: -20px;
     font-size: 69px; //nice
 }
 
-.subtitle {}
+.subtitle {
+    font-size: 45px;
+    letter-spacing: 8px;
+    position: relative;
+
+}
+
+.ornament-bottom {
+    margin-top: -15px;
+}
