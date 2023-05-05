@@ -45,7 +45,7 @@ export default {
         })
         .then((response) => {
           console.log(response.data);
-          this.media.splice(this.media.indexOf(this.media), 1);
+          this.media = this.media.filter((img) => img.id !== id);
         })
         .catch((error) => {
           console.log(error.response);
