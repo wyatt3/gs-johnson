@@ -113,6 +113,14 @@ input.form-control {
     margin-top: -15px;
 }
 
+.tabs ul {
+    list-style: none;
+}
+
+.tabs ul li a {
+    text-decoration: none;
+}
+
 @media screen and (max-width: 768px) {
     #app {
         display: flex;
