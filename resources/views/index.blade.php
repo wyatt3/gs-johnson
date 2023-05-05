@@ -12,11 +12,13 @@
 </div>
 <footer class="bg-primary d-flex justify-content-center py-2">
     @if($left)
-    <a href="{{ $left->url }}" target="_blank" class="footer-link footer-link-outer">{{ $left->displayName }}</a>
+    <a href="{{ $left->url }}" target="_blank" class="footer-link footer-link-outer footer-link-left">{{ $left->displayName }}</a>
+    <div class="footer-divider"></div>
     @endif
-    <a href="{{ asset('storage/GracieJohnson.pdf') }}" download class="footer-link footer-link-center">Download my Resume</a>
+    <a href="{{ asset('storage/GracieJohnson.pdf') }}" download class="footer-link footer-link-center"><span class="download-my">Download my</span><span class="my">My</span> Resume</a>
     @if($right)
-    <a href="{{ $right->url }}" target="_blank" class="footer-link footer-link-outer">{{ $right->displayName }}</a>
+    <div class="footer-divider"></div>
+    <a href="{{ $right->url }}" target="_blank" class="footer-link footer-link-outer footer-link-right">{{ $right->displayName }}</a>
     @endif
 </footer>
 @endsection

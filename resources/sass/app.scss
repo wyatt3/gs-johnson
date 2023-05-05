@@ -53,6 +53,14 @@ footer {
     border-right: solid 1px $gold-secondary;
 }
 
+.my {
+    display: none;
+}
+
+.footer-divider {
+    display: none;
+}
+
 form label {
     color: $gold-main;
 }
@@ -136,13 +144,39 @@ input.form-control {
     }
 
     footer {
-        flex-direction: column;
-        align-items: center;
         position: unset;
     }
 
     .footer-link {
-        border: none;
-        width: 50%;
+        width: 100%;
+        font-size: 1rem;
+    }
+
+    .footer-link-left {
+        border-left: none;
+    }
+
+    .footer-link-right {
+        border-right: none;
+    }
+
+    .footer-divider {
+        border-top: solid 1px $gold-secondary;
+        display: block;
+    }
+
+    .my {
+        display: inline;
+    }
+
+    .download-my {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 960px) {
+    .footer-link {
+        width: 27%;
+        font-size: 1.1em;
     }
 }
