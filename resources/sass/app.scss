@@ -97,6 +97,28 @@ header {
     border-right: solid 1px $gold-secondary;
 }
 
+.project-category {
+    display: none;
+}
+
+.project-category.active {
+    opacity: 1;
+    display: block;
+    animation: fadeIn 0.5s linear;
+}
+
+
+@keyframes fadeIn {
+
+    0% {
+        opacity: 0
+    }
+
+    100% {
+        opacity: 1
+    }
+}
+
 footer {
     position: absolute;
     bottom: 0;

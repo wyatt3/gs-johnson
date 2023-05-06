@@ -27,12 +27,10 @@
         v-for="category in projects"
         :key="category.id"
         :name="category.id"
-        v-show="activeTab === category.id"
+        :class="{ active: activeTab === category.id }"
         :categoryName="category.name"
         :initialProjects="category.projects"
-      >
-        {{ category.name }}
-      </category-projects>
+      ></category-projects>
     </div>
   </div>
 </template>

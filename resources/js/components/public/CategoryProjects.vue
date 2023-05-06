@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div class="container project-category">
+    <h2>{{ categoryName }}</h2>
     <div v-for="project in projects" :key="project.id">
       {{ project.title }}
     </div>
@@ -8,7 +9,7 @@
 
 <script>
 export default {
-  props: ["initialProjects"],
+  props: ["categoryName", "initialProjects"],
   data() {
     return {
       projects: [],
