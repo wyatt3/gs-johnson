@@ -1,15 +1,19 @@
 <template>
   <div class="container project-category">
     <h2>{{ categoryName }}</h2>
-    <div v-for="project in projects" :key="project.id">
-      {{ project.title }}
-    </div>
+    <project
+      v-for="project in projects"
+      :key="project.id"
+      :project="project"
+    ></project>
   </div>
 </template>
 
 <script>
+import project from "./Project.vue";
 export default {
   props: ["categoryName", "initialProjects"],
+  components: { project },
   data() {
     return {
       projects: [],
