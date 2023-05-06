@@ -1,16 +1,24 @@
 <template>
   <div>
     <div class="tabs bg-primary py-2">
-      <ul class="d-flex justify-content-evenly mb-0 p-0">
-        <li v-for="tab in tabs" :key="tab.id">
+      <div class="d-flex justify-content-center mb-0 p-0">
+        <div
+          class="tab-link-container d-flex"
+          v-for="(tab, index) in tabs"
+          :key="tab.id"
+        >
           <a
-            :class="{ active: activeTab === tab.id }"
+            :class="{
+              active: activeTab === tab.id,
+              'tab-link': true,
+            }"
             :href="'#' + tab.name.toLowerCase().replace(/ /g, '-')"
             v-text="tab.name"
             @click="selectTab(tab)"
           ></a>
-        </li>
-      </ul>
+          <div class="tab-divider" v-if="index != tabs.length - 1"></div>
+        </div>
+      </div>
     </div>
     <div class="projects-container">
       <spinner v-if="loading"></spinner>
@@ -20,6 +28,7 @@
         :key="category.id"
         :name="category.id"
         v-show="activeTab === category.id"
+        :categoryName="category.name"
         :initialProjects="category.projects"
       >
         {{ category.name }}
