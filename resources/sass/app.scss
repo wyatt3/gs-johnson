@@ -55,7 +55,9 @@ header {
 }
 
 .tab-link::before,
-.tab-link::after {
+.tab-link::after,
+.footer-link::before,
+.footer-link::after {
     content: '';
     position: absolute;
     width: 0;
@@ -64,11 +66,13 @@ header {
     background-color: $gold-secondary;
 }
 
-.tab-link::before {
+.tab-link::before,
+.footer-link::before {
     top: -1px;
 }
 
-.tab-link::after {
+.tab-link::after,
+.footer-link::after {
     bottom: -1px;
 }
 
@@ -87,7 +91,9 @@ header {
 }
 
 .tab-link:not(.tab-link.active):hover:before,
-.tab-link:not(.tab-link.active):hover:after {
+.tab-link:not(.tab-link.active):hover:after,
+.footer-link:hover:before,
+.footer-link:hover:after {
     height: 1px;
     width: 90%;
     animation: outline 0.3s ease-in-out;
@@ -132,6 +138,7 @@ footer {
     width: 25%;
     text-align: center;
     font-size: 1.2rem;
+    position: relative;
 }
 
 .footer-link:hover {
