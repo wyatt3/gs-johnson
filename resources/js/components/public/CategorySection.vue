@@ -1,25 +1,15 @@
 <template>
   <div>
-    <div class="tabs bg-primary py-2">
-      <div class="d-flex justify-content-center mb-0 p-0">
-        <div
-          class="tab-link-container d-flex"
-          v-for="(tab, index) in tabs"
-          :key="tab.id"
-        >
-          <a
-            :class="{
-              active: activeTab === tab.id,
-              'tab-link': true,
-            }"
-            :href="'#' + tab.name.toLowerCase().replace(/ /g, '-')"
-            v-text="tab.name"
-            @click="selectTab(tab)"
-          ></a>
-          <div class="tab-divider" v-if="index != tabs.length - 1"></div>
-        </div>
-      </div>
-    </div>
+    <desktop-nav
+      :tabs="tabs"
+      :activeTab="activeTab"
+      @tabChange="changeActiveTab"
+    ></desktop-nav>
+    <mobile-nav
+      :tabs="tabs"
+      :activeTab="activeTab"
+      @tabChange="changeActiveTab"
+    ></mobile-nav>
     <div class="projects-container">
       <spinner v-if="loading"></spinner>
       <category-projects
@@ -39,8 +29,10 @@
 import Spinner from "../Spinner.vue";
 import CategoryProjects from "./CategoryProjects.vue";
 import axios from "axios";
+import DesktopNav from "./DesktopNav.vue";
+import MobileNav from "./MobileNav.vue";
 export default {
-  components: { Spinner, CategoryProjects },
+  components: { Spinner, CategoryProjects, DesktopNav, MobileNav },
   data() {
     return {
       loading: false,
@@ -74,7 +66,7 @@ export default {
       });
   },
   methods: {
-    selectTab(selectedTab) {
+    changeActiveTab(selectedTab) {
       this.activeTab = selectedTab.id;
     },
   },

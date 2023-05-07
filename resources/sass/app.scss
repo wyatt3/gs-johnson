@@ -54,7 +54,7 @@ header {
     display: block;
     color: $gold-secondary;
     text-decoration: none;
-    font-size: 1.3rem;
+    font-size: 1.15rem;
     width: 100%;
     text-align: center;
 }
@@ -237,15 +237,23 @@ input.form-control {
     margin-top: -15px;
 }
 
-.tabs ul {
-    list-style: none;
+.tabs.mobile {
+    display: none;
 }
 
-.tabs ul li a {
-    text-decoration: none;
+.tabs.desktop {
+    display: block;
 }
 
 @media screen and (max-width: 768px) {
+
+    .tabs.mobile {
+        display: block;
+    }
+
+    .tabs.desktop {
+        display: none;
+    }
 
     header {
         padding-top: 1em;
@@ -297,5 +305,9 @@ input.form-control {
     .footer-link {
         width: 27%;
         font-size: 1.1em;
+    }
+
+    .tab-link {
+        font-size: .95em;
     }
 }
