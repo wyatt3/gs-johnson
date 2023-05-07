@@ -1,11 +1,7 @@
 <template>
   <div class="tabs mobile bg-primary py-2">
     <div class="d-flex flex-column justify-content-center mb-0 p-0">
-      <div
-        class="tab-link-container d-flex"
-        v-for="(tab, index) in tabs"
-        :key="tab.id"
-      >
+      <div class="tab-link-container my-1" v-for="tab in tabs" :key="tab.id">
         <a
           :class="{
             active: activeTab === tab.id,
