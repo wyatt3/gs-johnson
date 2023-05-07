@@ -86,6 +86,7 @@ export default {
               }
             )
             .then((response) => {
+              this.$emit("deleted", this.category);
               this.$destroy();
               this.$el.remove();
             })

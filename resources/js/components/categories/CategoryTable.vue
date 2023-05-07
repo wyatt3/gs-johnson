@@ -36,6 +36,7 @@
             v-for="category in categories"
             :key="category.id"
             :category="category"
+            @deleted="removeFromArray"
           ></category-table-row>
         </draggable>
       </div>
@@ -114,6 +115,9 @@ export default {
             console.log(error.response);
           });
       });
+    },
+    removeFromArray(category) {
+      this.categories.splice(this.categories.indexOf(category), 1);
     },
   },
   mounted() {
