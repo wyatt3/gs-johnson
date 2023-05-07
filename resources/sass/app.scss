@@ -76,6 +76,10 @@ header {
     bottom: -1px;
 }
 
+::file-selector-button {
+    background-color: $gold-main !important;
+}
+
 @keyframes outline {
     0% {
         height: 1px;
@@ -126,7 +130,7 @@ header {
 }
 
 footer {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
