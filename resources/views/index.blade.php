@@ -2,6 +2,7 @@
 
 @section('content')
 <header class="bg-secondary text-gold-main text-center pb-3">
+    <a class="admin-link" href="{{ route('admin') }}">Admin</a>
     <img width="100%" src="{{ asset('img/ornament.png') }}" aria-hidden>
     <h1 class="title">Gracie Johnson</h1>
     <span class="subtitle">Design Portfolio</span>

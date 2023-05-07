@@ -29,6 +29,14 @@ header {
     padding-top: 1.5em;
 }
 
+.admin-link {
+    text-decoration: none;
+    color: darken($secondary, 5%);
+    position: absolute;
+    top: 5px;
+    right: 10px;
+}
+
 .content {
     margin-bottom: 60px;
 }
