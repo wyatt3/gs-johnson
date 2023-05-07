@@ -33,8 +33,12 @@ header {
     text-decoration: none;
     color: darken($secondary, 5%);
     position: absolute;
-    top: 5px;
+    top: 2px;
     right: 10px;
+}
+
+.admin-link:hover {
+    color: lighten($secondary, 10%);
 }
 
 .content {
