@@ -18,9 +18,9 @@ class ProjectService
      * @param integer $order
      * @return Project
      */
-    public function createProject(string $name, string $description, ProjectCategory $category, int $order, array $files = []): Project
+    public function createProject(string $name, string $description, ProjectCategory $category, int $order, ?array $files): Project
     {
-
+        $files = $files ?? [];
         $project = Project::create([
             'title' => $name,
             'description' => $description,
