@@ -237,12 +237,23 @@ input.form-control {
     margin-top: -15px;
 }
 
-.tabs.mobile {
-    display: none;
-}
-
 .tabs.desktop {
     display: block;
+}
+
+.tabs.mobile {
+    display: none;
+    max-height: 55px;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+}
+
+.tabs.mobile.open {
+    max-height: 100vh;
+}
+
+.tabs.mobile .tab-link-container.active {
+    order: -1;
 }
 
 @media screen and (max-width: 768px) {
