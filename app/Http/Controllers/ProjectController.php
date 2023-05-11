@@ -30,7 +30,7 @@ class ProjectController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'description' => 'required',
+            // 'description' => 'required',
             'category_id' => 'required|exists:project_categories,id',
             'uploadedFiles' => 'array'
         ]);
@@ -38,7 +38,7 @@ class ProjectController extends Controller
         $category = ProjectCategory::findOrFail($request->category_id);
         $lastProjectInCategory = Project::where('category_id', $category->getKey())->orderBy('order', 'desc')->first();
 
-        ProjectService::createProject($request->title, $request->description, $category, $lastProjectInCategory ? $lastProjectInCategory->order + 1 : 1, $request->uploadedFiles);
+        ProjectService::createProject($request->title, $request->description ?? '', $category, $lastProjectInCategory ? $lastProjectInCategory->order + 1 : 1, $request->uploadedFiles);
         return redirect()->route('admin.projects.index');
     }
 
@@ -54,7 +54,7 @@ class ProjectController extends Controller
         $request->validate([
             'id' => 'required|exists:projects,id',
             'title' => 'required',
-            'description' => 'required',
+            // 'description' => 'required',
             'category_id' => 'required|exists:project_categories,id',
             'uploadedFiles' => 'array'
         ]);
@@ -62,7 +62,7 @@ class ProjectController extends Controller
         $project = Project::find($request->id);
         $category = ProjectCategory::findOrFail($request->category_id);
 
-        ProjectService::updateProject($project, $request->title, $request->description, $category, $request->uploadedFiles);
+        ProjectService::updateProject($project, $request->title, $request->description ?? '', $category, $request->uploadedFiles);
         return redirect()->route('admin.projects.index');
     }
 

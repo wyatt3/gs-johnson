@@ -22,8 +22,8 @@
     </select>
     <label class="mt-2 mb-1" for="title">Project Title</label>
     <input type="text" class="form-control" id="title" name="title" placeholder="Enter project title" value="{{ $project->title }}">
-    <label class="mt-2 mb-1" for="description">Project Description</label>
-    <textarea class="form-control bg-primary text-gold-secondary" id="description" name="description" rows="8" placeholder="Enter project description">{{ $project->description }}</textarea>
+    <!-- <label class="mt-2 mb-1" for="description">Project Description</label> -->
+    <!-- <textarea class="form-control bg-primary text-gold-secondary" id="description" name="description" rows="8" placeholder="Enter project description">{{ $project->description }}</textarea> -->
     <label class="mt-2 mb-1" for="images">Add Project Media</label>
     <file-upload></file-upload>
     <input type="submit" class="btn btn-gold-main mt-2" value="Update Project">

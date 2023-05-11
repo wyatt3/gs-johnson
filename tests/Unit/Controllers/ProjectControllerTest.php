@@ -40,7 +40,7 @@ class ProjectControllerTest extends TestCase
         $this->actingAs($this->user);
         $response = $this->post(route('admin.projects.create'), [
             'title' => $this->faker->word(),
-            'description' => $this->faker->sentence(),
+            // 'description' => $this->faker->sentence(),
             'category_id' => ProjectCategory::factory()->create()->getKey(),
             'uploadedFiles' => []
         ]);
@@ -67,7 +67,7 @@ class ProjectControllerTest extends TestCase
         $response = $this->post(route('admin.projects.update'), [
             'id' => $project->getKey(),
             'title' => $this->faker->word(),
-            'description' => $this->faker->sentence(),
+            // 'description' => $this->faker->sentence(),
             'category_id' => ProjectCategory::factory()->create()->getKey(),
             'uploadedFiles' => []
         ]);

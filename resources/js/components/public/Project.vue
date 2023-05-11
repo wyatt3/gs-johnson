@@ -10,7 +10,7 @@
           :key="img.id"
         />
       </div>
-      <p class="text-gold-secondary">{{ project.description }}</p>
+      <!-- <p class="text-gold-secondary">{{ project.description }}</p> -->
     </div>
   </div>
 </template>
