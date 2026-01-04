@@ -10,18 +10,11 @@
       ></button>
       <div v-if="adding" class="d-flex">
         <button class="btn btn-warning me-2" @click="cancelAdd">Cancel</button>
-        <input
-          class="form-control"
-          type="text"
-          v-model="newCategoryName"
-          placeholder="Category Name"
-        />
+        <input class="form-control" type="text" v-model="newCategoryName" placeholder="Category Name" />
       </div>
     </div>
     <div class="bg-primary rounded p-3 pb-1">
-      <div
-        class="d-flex text-gold-main justify-content-between border-bottom pb-1 border-gold-secondary"
-      >
+      <div class="d-flex text-gold-main justify-content-between border-bottom pb-1 border-gold-secondary">
         <span>Category Name</span>
         <span>
           <span class="px-3">Edit</span>
@@ -45,7 +38,7 @@
 </template>
 <script>
 import CategoryTableRow from "./CategoryTableRow.vue";
-import draggable from "vuedraggable";
+import draggable from "vue-draggable";
 import Spinner from "../Spinner.vue";
 export default {
   components: { CategoryTableRow, draggable, Spinner },

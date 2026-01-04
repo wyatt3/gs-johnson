@@ -2,9 +2,7 @@
   <div>
     <h3>{{ category }}</h3>
     <div class="bg-primary rounded p-3 pb-1 mb-3">
-      <div
-        class="d-flex text-gold-main justify-content-between border-bottom pb-1 border-gold-secondary"
-      >
+      <div class="d-flex text-gold-main justify-content-between border-bottom pb-1 border-gold-secondary">
         <span>Project Name</span>
         <span>
           <span class="px-3">Edit</span>
@@ -23,7 +21,7 @@
   </div>
 </template>
 <script>
-import draggable from "vuedraggable";
+import draggable from "vue-draggable";
 import ProjectTableRow from "./ProjectTableRow.vue";
 export default {
   components: { ProjectTableRow, draggable },

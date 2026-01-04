@@ -1,10 +1,6 @@
 <template>
   <draggable class="row mt-3" v-model="media" @change="updateOrder">
-    <div
-      class="col-12 col-md-8 col-lg-6 mb-2 img"
-      v-for="img in media"
-      :key="img.id"
-    >
+    <div class="col-12 col-md-8 col-lg-6 mb-2 img" v-for="img in media" :key="img.id">
       <span class="delete" @click="deleteMedia(img.id)">&times;</span>
       <img class="w-100" :src="'/media/' + img.path" />
     </div>
@@ -12,7 +8,7 @@
 </template>
 
 <script>
-import draggable from "vuedraggable";
+import draggable from "vue-draggable";
 import axios from "axios";
 export default {
   components: { draggable },
