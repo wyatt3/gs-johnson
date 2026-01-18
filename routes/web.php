@@ -22,8 +22,7 @@ Auth::routes(['register' => false]);
 Route::get('/', [Controller::class, 'index'])->name('home');
 
 Route::prefix('/admin')->middleware('auth')->group(function () {
-    Route::get('/', [Controller::class, 'adminIndex'])->name('admin');
-    Route::get('/project-categories', [ProjectCategoryController::class, 'getProjectCategoriesInterface'])->name('admin.project-categories.index');
+    Route::get('/', [ProjectCategoryController::class, 'getProjectCategoriesInterface'])->name('admin');
 
     Route::prefix('/projects')->group(function () {
         Route::get('/', [ProjectController::class, 'getProjectsInterface'])->name('admin.projects.index');
@@ -34,3 +33,5 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
         Route::get('/{id}', [ProjectController::class, 'getProject'])->name('admin.project.get');
     });
 });
+
+Route::get('/{category}', [Controller::class, 'getCategory'])->name('category');

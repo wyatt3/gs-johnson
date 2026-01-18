@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="content">
-    <category-section></category-section>
+    <!-- category carousel -->
 </div>
 <footer class="bg-primary d-flex justify-content-center py-2">
     <div class="footer-divider"></div>

@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="bg-primary rounded p-3 pb-1">
-      <div class="d-flex text-gold-main justify-content-between border-bottom pb-1 border-gold-secondary">
+      <div class="d-flex text-gold-main justify-content-between border-bottom pb-1 border-white">
         <span>Category Name</span>
         <span>
           <span class="px-3">Edit</span>

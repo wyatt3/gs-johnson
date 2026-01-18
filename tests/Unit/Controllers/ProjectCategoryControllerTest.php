@@ -11,7 +11,7 @@ class ProjectCategoryControllerTest extends TestCase
     public function testGetProjectCategoriesInterface()
     {
         $this->actingAs($this->user);
-        $response = $this->get(route('admin.project-categories.index'));
+        $response = $this->get(route('admin'));
 
         $response->assertStatus(200);
     }
