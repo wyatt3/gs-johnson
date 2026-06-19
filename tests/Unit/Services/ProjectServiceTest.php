@@ -2,24 +2,32 @@
 
 namespace Tests\Unit\Services;
 
-use App\Facades\ProjectService;
 use App\Models\Project;
 use App\Services\ProjectMediaService;
+use App\Services\ProjectService;
 use Illuminate\Http\UploadedFile;
 use Tests\TestCase;
 
 class ProjectServiceTest extends TestCase
 {
+    private ProjectService $projectService;
+    private $mockProjectMediaService;
+
+    public function setUp(): void
+    {
+        parent::setUp();
+        $this->mockProjectMediaService = $this->mock(ProjectMediaService::class);
+        $this->projectService = resolve(ProjectService::class);
+    }
+
     public function testCreateProject()
     {
-        $this->mock(ProjectMediaService::class, function ($mock) {
-            $mock->shouldReceive('createProjectMedia')->once();
-        });
+        $this->mockProjectMediaService->shouldReceive('createProjectMedia')->once();
 
         $project = Project::factory()->make();
         $image = UploadedFile::fake()->image($this->faker->word() . '.jpg');
 
-        ProjectService::createProject(
+        $this->projectService->createProject(
             $project->title,
             $project->description,
             $project->projectCategory,
@@ -37,14 +45,12 @@ class ProjectServiceTest extends TestCase
 
     public function testUpdateProject()
     {
-        $this->mock(ProjectMediaService::class, function ($mock) {
-            $mock->shouldReceive('createProjectMedia')->once();
-        });
+        $this->mockProjectMediaService->shouldReceive('createProjectMedia')->once();
         $image = UploadedFile::fake()->image($this->faker->word() . '.jpg');
         $project = Project::factory()->create();
         $newProject = Project::factory()->make();
 
-        $response = ProjectService::updateProject(
+        $response = $this->projectService->updateProject(
             $project,
             $newProject->title,
             $newProject->description,
@@ -61,7 +67,7 @@ class ProjectServiceTest extends TestCase
         $project = Project::factory()->create();
         $newOrder = $this->faker->numberBetween(1, 10);
 
-        $project = ProjectService::updateProjectOrder($project, $newOrder);
+        $project = $this->projectService->updateProjectOrder($project, $newOrder);
 
         $this->assertEquals($newOrder, $project->order);
     }
@@ -70,7 +76,7 @@ class ProjectServiceTest extends TestCase
     {
         $project = Project::factory()->create();
 
-        $response = ProjectService::deleteProject($project);
+        $response = $this->projectService->deleteProject($project);
 
         $this->assertTrue($response);
     }

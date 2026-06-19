@@ -2,16 +2,23 @@
 
 namespace App\Services;
 
-use App\Facades\ProjectService;
+use App\Models\Project;
 use App\Models\ProjectCategory;
 
 class ProjectCategoryService
 {
+    private ProjectService $projectService;
+
+    public function __construct(ProjectService $projectService)
+    {
+        $this->projectService = $projectService;
+    }
+
     /**
      * create project category
      *
      * @param string $name
-     * @param integer $order
+     * @param int $order
      * @return ProjectCategory
      */
     public function createProjectCategory(string $name, int $order): ProjectCategory
@@ -27,7 +34,7 @@ class ProjectCategoryService
      *
      * @param ProjectCategory $category
      * @param string $name
-     * @param integer $order
+     * @param int $order
      * @return ProjectCategory
      */
     public function editProjectCategory(ProjectCategory $category, string $name, int $order): ProjectCategory
@@ -44,12 +51,13 @@ class ProjectCategoryService
      * delete project category
      *
      * @param ProjectCategory $category
-     * @return boolean
+     * @return bool
      */
     public function deleteProjectCategory(ProjectCategory $category): bool
     {
         $category->projects()->each(function ($project) {
-            ProjectService::deleteProject($project);
+            /** @var Project $project */
+            $this->projectService->deleteProject($project);
         });
         $category->delete();
         return true;

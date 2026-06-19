@@ -15,12 +15,12 @@ class ProjectMediaService
      *
      * @param Project $project
      * @param UploadedFile $file
-     * @param integer $order
+     * @param int $order
      * @return ProjectMedia
      */
     public function createProjectMedia(Project $project, UploadedFile $file, int $order): ProjectMedia
     {
-        $media = ProjectMedia::make([
+        $media = new ProjectMedia([
             'order' => $order,
         ]);
 
@@ -41,8 +41,7 @@ class ProjectMediaService
      * update project media order
      *
      * @param ProjectMedia $media
-     * @param UploadedFile $file
-     * @param integer $order
+     * @param int $order
      * @return ProjectMedia
      */
     public function updateProjectMediaOrder(ProjectMedia $media, int $order): ProjectMedia
@@ -58,7 +57,7 @@ class ProjectMediaService
      * delete project media
      *
      * @param ProjectMedia $media
-     * @return boolean
+     * @return bool
      */
     public function deleteProjectMedia(ProjectMedia $media): bool
     {

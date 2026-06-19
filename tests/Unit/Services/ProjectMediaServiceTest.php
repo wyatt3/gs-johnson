@@ -2,18 +2,21 @@
 
 namespace Tests\Unit\Services;
 
-use App\Facades\ProjectMediaService;
 use App\Models\Project;
 use App\Models\ProjectMedia;
+use App\Services\ProjectMediaService;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
 class ProjectMediaServiceTest extends TestCase
 {
+    private ProjectMediaService $projectMediaService;
+
     public function setUp(): void
     {
         parent::setUp();
+        $this->projectMediaService = resolve(ProjectMediaService::class);
     }
 
     public function testCreateProjectMedia()
@@ -23,7 +26,7 @@ class ProjectMediaServiceTest extends TestCase
         $file = UploadedFile::fake()->image('test.jpg');
         $order = $this->faker->numberBetween(1, 10);
 
-        $response = ProjectMediaService::createProjectMedia($project, $file, $order);
+        $response = $this->projectMediaService->createProjectMedia($project, $file, $order);
 
         $this->assertInstanceOf(ProjectMedia::class, $response);
         $this->assertDatabaseHas('project_media', [
@@ -38,7 +41,7 @@ class ProjectMediaServiceTest extends TestCase
         $media = ProjectMedia::factory()->create();
         $newOrder = $this->faker->numberBetween(1, 10);
 
-        $media = ProjectMediaService::updateProjectMediaOrder($media, $newOrder);
+        $media = $this->projectMediaService->updateProjectMediaOrder($media, $newOrder);
 
         $this->assertEquals($newOrder, $media->order);
     }
@@ -48,7 +51,7 @@ class ProjectMediaServiceTest extends TestCase
         Storage::fake('media');
         $media = ProjectMedia::factory()->create();
 
-        $response = ProjectMediaService::deleteProjectMedia($media);
+        $response = $this->projectMediaService->deleteProjectMedia($media);
 
         $this->assertTrue($response);
     }

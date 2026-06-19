@@ -2,23 +2,25 @@
 
 namespace Tests\Unit\Services;
 
-use App\Facades\ProjectCategoryService;
 use App\Models\ProjectCategory;
+use App\Services\ProjectCategoryService;
 use Tests\TestCase;
 
 class ProjectCategoryServiceTest extends TestCase
 {
+    private ProjectCategoryService $projectCategoryService;
 
     public function setUp(): void
     {
         parent::setUp();
+        $this->projectCategoryService = resolve(ProjectCategoryService::class);
     }
 
     public function testCreateProjectCategory()
     {
         $category = ProjectCategory::factory()->make();
 
-        ProjectCategoryService::createProjectCategory($category->name, $category->order);
+        $this->projectCategoryService->createProjectCategory($category->name, $category->order);
 
         $this->assertDatabaseHas('project_categories', [
             'name' => $category->name,
@@ -31,7 +33,7 @@ class ProjectCategoryServiceTest extends TestCase
         $category = ProjectCategory::factory()->create();
         $newCategory = ProjectCategory::factory()->make();
 
-        $response = ProjectCategoryService::editProjectCategory($category, $newCategory->name, $newCategory->order);
+        $response = $this->projectCategoryService->editProjectCategory($category, $newCategory->name, $newCategory->order);
 
         $category->refresh();
         $this->assertEquals($category->toArray(), $response->toArray());
@@ -41,7 +43,7 @@ class ProjectCategoryServiceTest extends TestCase
     {
         $category = ProjectCategory::factory()->create();
 
-        $response = ProjectCategoryService::deleteProjectCategory($category);
+        $response = $this->projectCategoryService->deleteProjectCategory($category);
 
         $this->assertTrue($response);
     }

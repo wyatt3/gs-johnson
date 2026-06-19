@@ -2,17 +2,19 @@
 
 namespace Database\Factories;
 
-use App\Models\Project;
 use App\Models\ProjectCategory;
 use App\Models\ProjectMedia;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Project>
+ */
 class ProjectFactory extends Factory
 {
     /**
      * Define the model's default state.
      *
-     * @return array
+     * @return array<string, mixed>
      */
     public function definition()
     {
@@ -24,9 +26,9 @@ class ProjectFactory extends Factory
         ];
     }
 
-    public function withMedia()
+    public function withMedia(): static
     {
-        return $this->afterCreating(function (Project $project) {
+        return $this->afterCreating(function ($project) {
             ProjectMedia::factory()->for($project)->count(2)->create();
         });
     }

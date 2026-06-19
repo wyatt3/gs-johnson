@@ -2,19 +2,24 @@
 
 namespace Tests\Feature;
 
-use App\Facades\ProjectCategoryService;
 use App\Models\Project;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
+use App\Services\ProjectCategoryService;
 use Tests\TestCase;
 
 class DeletionTest extends TestCase
 {
+    private ProjectCategoryService $projectCategoryService;
+    public function setUp(): void
+    {
+        parent::setUp();
+        $this->projectCategoryService = resolve(ProjectCategoryService::class);
+    }
+
     public function testDeletes()
     {
         $project = Project::factory()->withMedia()->create();
 
-        ProjectCategoryService::deleteProjectCategory($project->projectCategory);
+        $this->projectCategoryService->deleteProjectCategory($project->projectCategory);
 
         $this->assertDatabaseMissing('project_categories', [
             'id' => $project->projectCategory->getKey()

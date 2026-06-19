@@ -52,7 +52,7 @@ class ProjectControllerTest extends TestCase
     {
         $project = Project::factory()->create();
         $this->actingAs($this->user);
-        $response = $this->get(route('admin.projects.edit', ['id' => $project->getKey()]));
+        $response = $this->get(route('admin.projects.edit', ['project' => $project]));
 
         $response->assertStatus(200);
     }

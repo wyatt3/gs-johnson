@@ -2,33 +2,62 @@
 
 namespace App\Http\Controllers;
 
-use App\Facades\ProjectMediaService;
 use App\Models\ProjectMedia;
+use App\Services\ProjectMediaService;
 use Illuminate\Http\Request;
 
 class ProjectMediaController extends Controller
 {
-    public function postUpdateProjectMediaOrder(Request $request)
+    private ProjectMediaService $service;
+
+    public function __construct(ProjectMediaService $service)
+    {
+        $this->service = $service;
+    }
+
+    /**
+     * Update project media order.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function postUpdateProjectMediaOrder(Request $request): \Illuminate\Http\JsonResponse
     {
         $request->validate([
             'id' => 'required|exists:project_media,id',
             'order' => 'required|integer'
         ]);
-        $media = ProjectMedia::find($request->id);
 
-        $media = ProjectMediaService::updateProjectMediaOrder($media, $request->order);
+        /** @var int $id */
+        $id = $request->id;
+        /** @var int $order */
+        $order = $request->order;
+
+        $media = ProjectMedia::findOrFail($id);
+
+        $media = $this->service->updateProjectMediaOrder($media, $order);
 
         return response()->json($media);
     }
 
-    public function postDeleteProjectMedia(Request $request)
+    /**
+     * Delete project media.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function postDeleteProjectMedia(Request $request): \Illuminate\Http\JsonResponse
     {
         $request->validate([
             'id' => 'required|exists:project_media,id',
         ]);
-        $media = ProjectMedia::find($request->id);
 
-        ProjectMediaService::deleteProjectMedia($media);
+        /** @var int $id */
+        $id = $request->id;
+
+        $media = ProjectMedia::findOrFail($id);
+
+        $this->service->deleteProjectMedia($media);
 
         return response()->json($media);
     }

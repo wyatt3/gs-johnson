@@ -11,15 +11,17 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function index()
+    public function index(): \Illuminate\Contracts\View\View
     {
-        $footerLinks = file_exists(__DIR__ . '/../../../footer/links.json') ? json_decode(file_get_contents(__DIR__ . '/../../../footer/links.json')) : [];
+        /** @var string $fileContents */
+        $fileContents = file_get_contents(__DIR__ . '/../../../footer/links.json');
+        $footerLinks = file_exists(__DIR__ . '/../../../footer/links.json') ? json_decode($fileContents) : [];
         return view('index', [
             'footerLinks' => $footerLinks
         ]);
     }
 
-    public function adminIndex()
+    public function adminIndex(): \Illuminate\Contracts\View\View
     {
         return view('admin.index');
     }
