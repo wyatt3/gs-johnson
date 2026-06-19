@@ -4,6 +4,7 @@
 /public/media
 public/js/app.js
 public/css/app.css
+public/build
 /storage/*.key
 /vendor
 .env
@@ -17,3 +18,4 @@ yarn-error.log
 /.idea
 /.vscode
 social/*
+footer/links.json

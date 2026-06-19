@@ -5,19 +5,19 @@
 
 @font-face {
     font-family: 'Broadway';
-    src: url('/fonts/BroadwayRegular.ttf');
+    src: url('../fonts/BroadwayRegular.ttf');
 }
 
 @font-face {
     font-family: 'Corbel';
-    src: url('/fonts/Corbel.ttf');
+    src: url('../fonts/Corbel.ttf');
 }
 
 // Variables
 @import 'variables';
 
 // Bootstrap
-@import 'node_modules/bootstrap/scss/bootstrap';
+@import '../../node_modules/bootstrap/scss/bootstrap';
 
 body {
     min-height: 100%;
