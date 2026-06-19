@@ -33,7 +33,4 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
         Route::post('/update', [ProjectController::class, 'postUpdateProject'])->name('admin.projects.update');
         Route::get('/{id}', [ProjectController::class, 'getProject'])->name('admin.project.get');
     });
-
-    Route::post('/update-resume', [Controller::class, 'postAdminUpdateResume'])->name('admin.resume.update');
-    Route::post('/update-social-link', [Controller::class, 'postAdminUpdateSocialLink'])->name('admin.social.update');
 });
