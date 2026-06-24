@@ -10,10 +10,15 @@
 @import '../../node_modules/bootstrap/scss/bootstrap';
 @import '../../node_modules/bootstrap-icons/font/bootstrap-icons.css';
 
+html {
+    background-color: $secondary;
+}
+
 body {
     min-height: 100%;
     font-family: 'Montserrat';
     font-size: 1em;
+    color: #000;
 }
 
 .header {
@@ -82,6 +87,10 @@ body {
 .header-title {
     position: relative;
     right: 25px;
+}
+
+
+.header-title h1 {
     font-family: 'Abril Fatface';
     font-size: 93px;
 }
@@ -90,12 +99,12 @@ body {
     position: absolute;
     width: 242px;
     left: -75px;
-    top: -30px;
+    top: -15px;
 }
 
 .design {
     position: absolute;
-    bottom: -4px;
+    bottom: 18px;
 }
 
 .from-gracie {
@@ -103,7 +112,7 @@ body {
     font-family: "Montserrat";
     font-size: 18px;
     position: absolute;
-    bottom: 2px;
+    bottom: 5px;
 }
 
 .homepage-divider {
@@ -111,20 +120,6 @@ body {
 }
 
 // OLD STYLES BELOW
-
-
-.admin-link {
-    text-decoration: none;
-    color: darken($secondary, 5%);
-    position: absolute;
-    top: 2px;
-    right: 10px;
-}
-
-.admin-link:hover {
-    color: lighten($secondary, 10%);
-}
-
 .content {
     margin-bottom: 60px;
 }
@@ -231,13 +226,6 @@ body {
     font-size: 1.75rem;
 }
 
-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-}
-
 .footer-link {
     color: #000;
     text-decoration: none;
@@ -270,13 +258,6 @@ form label {
 .navbar-brand {
     font-family: 'Broadway';
     color: $dark !important;
-}
-
-h1,
-h2,
-h3 {
-    font-family: 'Broadway';
-    color: $gold-main;
 }
 
 h2 textarea.form-control,

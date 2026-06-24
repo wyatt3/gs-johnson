@@ -7,8 +7,10 @@
     <div class="rhombus rhombus-5"></div>
     <div class="rhombus rhombus-6 bg-secondary"></div>
     <div class="header-title">
-        <div class="art-and">Art &amp;</div>
-        <div class="design">Design</div>
+        <h1>
+            <span class="art-and">Art &amp;</span>
+            <span class="design">Design</span>
+        </h1>
         <div class="from-gracie">from gracie johnson</div>
     </div>
 </header>

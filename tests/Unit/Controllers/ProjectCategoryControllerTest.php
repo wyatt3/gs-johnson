@@ -4,6 +4,7 @@ namespace Tests\Unit\Controllers;
 
 use App\Models\ProjectCategory;
 use App\Services\ProjectCategoryService;
+use Illuminate\Http\UploadedFile;
 use Tests\TestCase;
 
 class ProjectCategoryControllerTest extends TestCase
@@ -31,6 +32,8 @@ class ProjectCategoryControllerTest extends TestCase
         $this->actingAs($this->user);
         $response = $this->post('api/project-categories/create', [
             'name' => $this->faker->word(),
+            'description' => $this->faker->sentence(),
+            'image' => UploadedFile::fake()->image('test.png'),
             'order' => $this->faker->randomDigit()
         ]);
 
@@ -47,6 +50,7 @@ class ProjectCategoryControllerTest extends TestCase
         $response = $this->post('api/project-categories/update', [
             'id' => $projectCategory->getKey(),
             'name' => $this->faker->word(),
+            'description' => $this->faker->sentence(),
             'order' => $this->faker->randomDigit()
         ]);
 
