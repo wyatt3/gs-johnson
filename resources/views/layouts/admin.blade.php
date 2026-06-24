@@ -19,7 +19,7 @@
 
 <body class="bg-dark">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark bg-primary shadow-sm">
+        <nav class="navbar navbar-expand-md bg-primary shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ route('admin') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -34,7 +34,7 @@
                         @guest
                         @else
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.project-categories.index') }}">Categories</a>
+                            <a class="nav-link" href="{{ route('admin') }}">Categories</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('admin.projects.index') }}">Projects</a>
