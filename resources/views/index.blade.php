@@ -1,7 +1,8 @@
 @extends('layouts.app')
-@extends('layouts.app')
 
 @section('content')
+@include('partials.header')
+<div class="homepage-divider bg-primary"></div>
 <div class="content">
     <!-- category carousel-->
 </div>

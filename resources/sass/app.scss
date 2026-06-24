@@ -1,16 +1,7 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
 
-@font-face {
-    font-family: 'Broadway';
-    src: url('../fonts/BroadwayRegular.ttf');
-}
-
-@font-face {
-    font-family: 'Corbel';
-    src: url('../fonts/Corbel.ttf');
-}
 
 // Variables
 @import 'variables';
@@ -24,6 +15,103 @@ body {
     font-family: 'Montserrat';
     font-size: 1em;
 }
+
+.header {
+    display: flex;
+    position: relative;
+}
+
+.rhombus {
+    height: 190px;
+    width: 200px;
+    transform: skewX(15deg);
+    z-index: 10;
+}
+
+.white-rhombus {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.rhombus-1 {
+    position: absolute;
+    top: 0;
+    left: -175px;
+}
+
+.rhombus-2 {
+    width: 275px;
+    position: absolute;
+    top: 0;
+    left: -200px;
+}
+
+.rhombus-3 {
+    width: 375px;
+    position: absolute;
+    top: 0;
+    left: -250px;
+}
+
+.rhombus-4 {
+    width: 200px;
+    position: relative;
+    right: 25px;
+    z-index: 9;
+}
+
+.header-img {
+    z-index: 1;
+    position: relative;
+    right: 60px;
+}
+
+.rhombus-5 {
+    background-color: rgba(255, 255, 255, 0.47);
+    width: 15px;
+    position: relative;
+    right: 85px;
+}
+
+.rhombus-6 {
+    width: 55px;
+    z-index: 9;
+    position: relative;
+    right: 100px;
+}
+
+.header-title {
+    position: relative;
+    right: 25px;
+    font-family: 'Abril Fatface';
+    font-size: 93px;
+}
+
+.art-and {
+    position: absolute;
+    width: 242px;
+    left: -75px;
+    top: -30px;
+}
+
+.design {
+    position: absolute;
+    bottom: -4px;
+}
+
+.from-gracie {
+    width: 250px;
+    font-family: "Montserrat";
+    font-size: 18px;
+    position: absolute;
+    bottom: 2px;
+}
+
+.homepage-divider {
+    height: 22px;
+}
+
+// OLD STYLES BELOW
+
 
 .admin-link {
     text-decoration: none;
