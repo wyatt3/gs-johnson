@@ -13,6 +13,8 @@ class ProjectCategory extends Model
 
     protected $fillable = [
         'name',
+        'description',
+        'image',
         'order'
     ];
 

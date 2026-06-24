@@ -4,6 +4,8 @@ namespace Tests\Unit\Services;
 
 use App\Models\ProjectCategory;
 use App\Services\ProjectCategoryService;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
 class ProjectCategoryServiceTest extends TestCase
@@ -18,33 +20,54 @@ class ProjectCategoryServiceTest extends TestCase
 
     public function testCreateProjectCategory()
     {
-        $category = ProjectCategory::factory()->make();
+        Storage::fake('categories');
 
-        $this->projectCategoryService->createProjectCategory($category->name, $category->order);
+        $name = $this->faker->word();
+        $description = $this->faker->sentence();
+        $order = $this->faker->randomDigit();
+
+        $category = $this->projectCategoryService->createProjectCategory($name, $description, UploadedFile::fake()->image('test.png'), $order);
 
         $this->assertDatabaseHas('project_categories', [
-            'name' => $category->name,
-            'order' => $category->order
+            'name' => $name,
+            'description' => $description,
+            'order' => $order
         ]);
+
+        Storage::disk('categories')->assertExists($category->image);
     }
 
-    public function testeditProjectCategory()
+    public function testEditProjectCategory()
     {
+        Storage::fake('categories');
+
         $category = ProjectCategory::factory()->create();
-        $newCategory = ProjectCategory::factory()->make();
+        $newName = $this->faker->word();
+        $newDescription = $this->faker->sentence();
+        $newOrder = $this->faker->randomDigit();
 
-        $response = $this->projectCategoryService->editProjectCategory($category, $newCategory->name, $newCategory->order);
+        $response = $this->projectCategoryService->editProjectCategory($category, $newName, $newDescription, $newOrder, UploadedFile::fake()->image('test.png'));
 
-        $category->refresh();
-        $this->assertEquals($category->toArray(), $response->toArray());
+        $this->assertDatabaseHas('project_categories', [
+            'id' => $category->getKey(),
+            'name' => $newName,
+            'description' => $newDescription,
+            'order' => $newOrder
+        ]);
+
+        Storage::disk('categories')->assertExists($response->image);
     }
 
     public function testDeleteProjectCategory()
     {
+        Storage::fake('categories');
+
         $category = ProjectCategory::factory()->create();
 
         $response = $this->projectCategoryService->deleteProjectCategory($category);
 
         $this->assertTrue($response);
+
+        Storage::disk('categories')->assertMissing($category->image);
     }
 }

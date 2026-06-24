@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Project;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Http\UploadedFile;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ProjectMedia>
@@ -17,10 +18,11 @@ class ProjectMediaFactory extends Factory
      */
     public function definition()
     {
+        $fileName = $this->faker->word() . '.jpg';
         return [
             'project_id' => Project::factory(),
             'order' => $this->faker->numberBetween(1, 10),
-            'path' => $this->faker->image('public/storage/media', 1, 1, null, false)
+            'path' => UploadedFile::fake()->image($fileName)->storeAs('/', $fileName, 'media'),
         ];
     }
 }

@@ -2,6 +2,7 @@
 /public/hot
 /public/storage
 /public/media
+/public/categories
 public/js/app.js
 public/css/app.css
 public/build

@@ -46,15 +46,21 @@ class ProjectCategoryController extends Controller
     {
         $request->validate([
             'name' => 'required',
+            'description' => 'required',
+            'image' => 'image|required',
             'order' => 'required'
         ]);
 
         /** @var string $name */
         $name = $request->name;
+        /** @var string $description */
+        $description = $request->description;
+        /** @var \Illuminate\Http\UploadedFile $image */
+        $image = $request->file('image');
         /** @var int $order */
         $order = $request->order;
 
-        $projectCategory = $this->service->createProjectCategory($name, $order);
+        $projectCategory = $this->service->createProjectCategory($name, $description, $image, $order);
         return response()->json($projectCategory);
     }
 
@@ -69,18 +75,25 @@ class ProjectCategoryController extends Controller
         $request->validate([
             'id' => 'required|exists:project_categories,id',
             'name' => 'required',
-            'order' => 'required'
+            'description' => 'required',
+            'order' => 'required',
+            'image' => 'image'
         ]);
 
         /** @var int $id */
         $id = $request->id;
         /** @var string $name */
         $name = $request->name;
+        /** @var string $description */
+        $description = $request->description;
         /** @var int $order */
         $order = $request->order;
 
+        /** @var ?\Illuminate\Http\UploadedFile $image */
+        $image = $request->file('image');
+
         $category = ProjectCategory::findOrFail($id);
-        $projectCategory = $this->service->editProjectCategory($category, $name, $order);
+        $projectCategory = $this->service->editProjectCategory($category, $name, $description, $order, $image);
 
         return response()->json($projectCategory);
     }
