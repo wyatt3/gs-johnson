@@ -119,11 +119,6 @@ body {
     height: 22px;
 }
 
-// OLD STYLES BELOW
-.content {
-    margin-bottom: 60px;
-}
-
 .tab-link-container {
     flex: 1;
     position: relative;
@@ -196,16 +191,6 @@ body {
     border-right: solid 1px $gold-secondary;
 }
 
-.project-category {
-    display: none;
-}
-
-.project-category.active {
-    opacity: 1;
-    display: block;
-    animation: fadeIn 0.5s linear;
-}
-
 @keyframes fadeIn {
 
     0% {
@@ -230,7 +215,7 @@ body {
     color: #000;
     text-decoration: none;
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 20px;
     position: relative;
 }
 
@@ -248,7 +233,10 @@ body {
 }
 
 .footer-divider {
-    display: none;
+    border: 5px solid #000;
+    border-radius: 50%;
+    width: 5px;
+    height: 5px;
 }
 
 form label {
@@ -325,10 +313,6 @@ input.form-control {
         display: none;
     }
 
-    header {
-        padding-top: 1em;
-    }
-
     .title {
         font-size: 35px;
         margin: 0;
@@ -358,7 +342,6 @@ input.form-control {
     }
 
     .footer-divider {
-        border-top: solid 1px $gold-secondary;
         display: block;
     }
 
