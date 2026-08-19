@@ -1,0 +1,147 @@
+.header {
+    display: flex;
+    position: relative;
+}
+
+.bg-transparent-white {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.rhombus {
+    height: 190px;
+    width: 200px;
+    transform: skewX(15deg);
+    z-index: 10;
+}
+
+.rhombus-1 {
+    position: absolute;
+    top: 0;
+    left: -175px;
+}
+
+.rhombus-2 {
+    width: 275px;
+    position: absolute;
+    top: 0;
+    left: -200px;
+}
+
+.rhombus-3 {
+    width: 375px;
+    position: absolute;
+    top: 0;
+    left: -250px;
+}
+
+.rhombus-4 {
+    width: 200px;
+    position: relative;
+    right: 25px;
+    z-index: 9;
+}
+
+.rhombus-5 {
+    background-color: rgba(255, 255, 255, 0.47);
+    width: 15px;
+    position: absolute;
+}
+
+.rhombus-6 {
+    width: 55px;
+    z-index: 9;
+    position: absolute;
+}
+
+.left-rhombuses {
+    display: none;
+}
+
+.header-img {
+    z-index: 1;
+    margin-left: -290px;
+}
+
+.right-rhombuses {
+    position: relative;
+    right: 25px;
+}
+
+.header-title {
+    position: relative;
+    z-index: 10;
+}
+
+.header-title h1 {
+    font-family: 'Abril Fatface';
+    font-size: 50px;
+
+}
+.art-and {
+    display: block;
+    margin-top:25px;
+    width: 242px;
+}
+
+.design {
+    position: relative;
+    bottom: 15px;
+    left: 40px;
+}
+
+.from-gracie {
+    width: 250px;
+    font-family: "Montserrat";
+    position: absolute;
+    left: 40px;
+    bottom: 35px;
+
+}
+
+@media screen and (min-width: 500px) {
+    .header-title h1 {
+        font-size: 75px;
+    }
+
+    .art-and {
+        margin-top: 0;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .left-rhombuses {
+        display: block;
+    }
+
+    .header-title {
+        left: 115px;
+    }
+
+    .header-title h1 {
+        font-size: 93px;
+    }
+
+    .header-img {
+        margin-left: -60px;
+    }
+
+    .art-and {
+        margin-top: 0;
+        position: absolute;
+        left: -75px;
+        top: -15px;
+    }
+
+    .design {
+        position: absolute;
+        left: 0;
+        bottom: 18px;
+    }
+
+    .from-gracie {
+        font-size: 18px;
+        position: absolute;
+        bottom: 5px;
+        left: 0;
+    }
+}
