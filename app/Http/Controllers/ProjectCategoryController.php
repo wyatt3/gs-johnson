@@ -15,6 +15,12 @@ class ProjectCategoryController extends Controller
         $this->service = $service;
     }
 
+    public function getPublicCategoryPage(string $categoryName): \Illuminate\Contracts\View\View
+    {
+        $projectCategory = ProjectCategory::where('name', $categoryName)->firstOrFail();
+        return view('category', ['projectCategory' => $projectCategory]);
+    }
+
     /**
      * Get the project categories interface.
      *

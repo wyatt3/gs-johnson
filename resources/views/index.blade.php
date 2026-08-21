@@ -4,6 +4,7 @@
 @include('partials.header')
 <div class="homepage-divider bg-primary"></div>
 <carousel :categories="{{ $categories }}"></carousel>
+<div class="homepage-divider bg-primary"></div>
 <footer class="bg-secondary d-flex justify-content-center align-items-center py-2">
     <div class="footer-divider"></div>
     @foreach($footerLinks as $link)

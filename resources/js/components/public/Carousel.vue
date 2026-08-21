@@ -3,8 +3,9 @@
     <button class="left-arrow" @click="prevSlide"><i class="bi bi-chevron-left"></i></button>
     <button class="right-arrow" @click="nextSlide"><i class="bi bi-chevron-right"></i></button>
     <div class="custom-carousel-slides">
-      <div
-        class="custom-carousel-item bg-dark"
+      <a
+        :href="'/categories/' + encodeURIComponent(category.name)"
+        class="custom-carousel-item bg-dark text-black text-decoration-none"
         :class="{ active: currentSlide === index }"
         v-for="(category, index) in categories"
         :key="category.id"
@@ -18,7 +19,7 @@
         <div class="right-side">
           <img :src="'/categories/' + category.image" />
         </div>
-      </div>
+      </a>
     </div>
   </div>
 </template>
@@ -60,6 +61,15 @@ export default {
 </script>
 
 <style scoped>
+.left-side div {
+  margin-left: 0px;
+  max-width: 400px;
+}
+
+h2 {
+  line-height: 5.2rem;
+}
+
 .custom-carousel {
   position: relative;
   height: 520px;

@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes(['register' => false]);
 
 Route::get('/', [Controller::class, 'index'])->name('home');
+Route::get('/categories/{categoryName}', [ProjectCategoryController::class, 'getPublicCategoryPage'])->name('category');
 
 Route::prefix('/admin')->middleware('auth')->group(function () {
     Route::get('/', [ProjectCategoryController::class, 'getProjectCategoriesInterface'])->name('admin');
